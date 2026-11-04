@@ -17,7 +17,17 @@ Die App hat sechs Auslese-Module, weil jedes Modul in Make ein festes Ausgabesch
 | Search usage entries | `GET /api/v1/usage` | Einträge von heute und gestern, je Eintrag ein Bundle |
 | Make an API call | Pfad ab der Domain, zum Beispiel `/api/v1/account` | Body, Header, Status |
 
-Die Verbindung prüft den Schlüssel mit `GET /api/v1/account`. Eintragen nur den Schlüssel, ohne das Wort `Bearer`. Zum Bauen der Szenarien reicht der öffentliche Test-Key `pak_test_X0001`: die Datei wird ignoriert, es läuft keine KI, zurück kommt das Beispiel-JSON.
+Die Verbindung prüft den Schlüssel mit `GET /api/v1/account`. Eintragen nur den Schlüssel, ohne das Wort `Bearer`. Zum Bauen der Szenarien reicht der öffentliche Test-Key `pak_test_X0001`: die Datei wird ignoriert, es läuft keine KI, zurück kommt das Beispiel-JSON. Einen eigenen Live-Key (`pak_live_…`) gibt es mit dem [Starter-Paket](https://parser-api.micro-ki.de/starten) (Prepaid-Credits, kein Abo).
+
+## Erweiterte Einstellungen (Advanced settings)
+
+Unter **Show advanced settings** am Ende der Auslese- und Kosten-Module liegen die optionalen Header:
+
+| Einstellung | Parameter | Modul | Wirkung |
+| --- | --- | --- | --- |
+| **Read lines with OCR** | `linesOcr` (Boolean, Standard `false`) | `Parse an invoice`, `Get a quote` | Sendet `X-Parser-Lines: ocr`. Für ZUGFeRD-/Factur-X-PDFs im Profil `MINIMUM` oder `BASIC WL`, deren eingebettetes XML keine Positionen enthält (`warnings` enthält `xml_without_lines`). Die KI liest die Positionen und fehlende Felder von der sichtbaren Seite, Kopf und Summen aus dem XML bleiben erhalten. Kostet den PDF-OCR-Seitenpreis. |
+| **Force fresh read** | `force` (Boolean, Standard `false`) | alle `Parse`-Module, `Get a quote` | Sendet `X-Parser-Force: 1`. Überspringt die 15-Minuten-Antwort aus dem Cache und liest die Datei neu aus (kostet wieder Credits). Bei ZUGFeRD-/Factur-X-PDFs wird damit das eingebettete XML übersprungen und die sichtbare Seite per KI gelesen (`xml_forced_ocr`). Bei `Get a quote` wird der Preis für das frische Auslesen berechnet, ohne Credits abzubuchen. |
+| **Idempotency key** | `idempotencyKey` (Text, optional) | alle `Parse`-Module | Sendet `Idempotency-Key` (`8` bis `128` Zeichen: `A–Z`, `a–z`, `0–9`, `.`, `_`, `-`). Leer lassen sendet keinen Header; dieselbe Datei erkennt der Server über den SHA-256-Hash trotzdem 15 Minuten lang für `0` Credits. Wird ein eigener Schlüssel gesetzt, muss er je Datei eindeutig sein und bei Wiederholungen gleich bleiben; derselbe Schlüssel für eine andere Datei liefert `409 idempotency_key_conflict`. |
 
 ## Grenze: 40 Sekunden
 

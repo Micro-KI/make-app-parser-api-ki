@@ -5,6 +5,6 @@
         "label": "API key",
         "editable": true,
         "required": true,
-        "help": "Enter your API key without the `Bearer` prefix. For example, `pak_live_…` or the public test key `pak_test_X0001`. For details on how to obtain your API key, see the [Parser API KI+ API documentation](https://parser-api.micro-ki.de/doku)."
+        "help": "Enter your API key without the `Bearer` prefix. For example, `pak_live_…` or the public test key `pak_test_X0001`. To create an account and get a live API key, see the [Starter Package](https://parser-api.micro-ki.de/starten) and the [Parser API KI+ API documentation](https://parser-api.micro-ki.de/doku)."
     }
 ]
