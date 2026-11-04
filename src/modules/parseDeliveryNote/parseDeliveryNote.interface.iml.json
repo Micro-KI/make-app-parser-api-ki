@@ -1,0 +1,244 @@
+[
+    {
+        "name": "schema",
+        "type": "text",
+        "label": "Schema"
+    },
+    {
+        "name": "source",
+        "type": "text",
+        "label": "Source"
+    },
+    {
+        "name": "request_id",
+        "type": "text",
+        "label": "Request ID"
+    },
+    {
+        "name": "billed",
+        "type": "integer",
+        "label": "Credits billed"
+    },
+    {
+        "name": "available",
+        "type": "integer",
+        "label": "Credits available"
+    },
+    {
+        "name": "pricing",
+        "type": "collection",
+        "label": "Pricing",
+        "spec": [
+            {
+                "name": "rule",
+                "type": "text",
+                "label": "Rule"
+            },
+            {
+                "name": "label",
+                "type": "text",
+                "label": "Label"
+            }
+        ]
+    },
+    {
+        "name": "document",
+        "type": "collection",
+        "label": "Document",
+        "spec": [
+            {
+                "name": "type",
+                "type": "text",
+                "label": "Type"
+            },
+            {
+                "name": "page_count",
+                "type": "number",
+                "label": "Page count"
+            }
+        ]
+    },
+    {
+        "name": "supplier",
+        "type": "collection",
+        "label": "Sender",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Address"
+            },
+            {
+                "name": "vat_id",
+                "type": "text",
+                "label": "VAT ID"
+            }
+        ]
+    },
+    {
+        "name": "ship_to",
+        "type": "collection",
+        "label": "Ship to",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Delivery address"
+            }
+        ]
+    },
+    {
+        "name": "delivery",
+        "type": "collection",
+        "label": "Delivery note header",
+        "spec": [
+            {
+                "name": "number",
+                "type": "text",
+                "label": "Delivery note number"
+            },
+            {
+                "name": "date",
+                "type": "text",
+                "label": "Delivery date"
+            },
+            {
+                "name": "order_number",
+                "type": "text",
+                "label": "Order number"
+            },
+            {
+                "name": "carrier",
+                "type": "text",
+                "label": "Carrier"
+            },
+            {
+                "name": "tracking_number",
+                "type": "text",
+                "label": "Tracking number"
+            },
+            {
+                "name": "packing",
+                "type": "text",
+                "label": "Packing"
+            }
+        ]
+    },
+    {
+        "name": "notes",
+        "type": "array",
+        "label": "Notes",
+        "spec": {
+            "type": "text",
+            "label": "Note"
+        }
+    },
+    {
+        "name": "lines",
+        "type": "array",
+        "label": "Lines",
+        "spec": [
+            {
+                "name": "seller_item_number",
+                "type": "text",
+                "label": "Seller item number"
+            },
+            {
+                "name": "buyer_item_number",
+                "type": "text",
+                "label": "Buyer item number"
+            },
+            {
+                "name": "gtin",
+                "type": "text",
+                "label": "GTIN"
+            },
+            {
+                "name": "description",
+                "type": "text",
+                "label": "Description"
+            },
+            {
+                "name": "quantity",
+                "type": "number",
+                "label": "Delivered quantity"
+            },
+            {
+                "name": "ordered_quantity",
+                "type": "number",
+                "label": "Ordered quantity"
+            },
+            {
+                "name": "outstanding_quantity",
+                "type": "number",
+                "label": "Outstanding"
+            },
+            {
+                "name": "unit",
+                "type": "text",
+                "label": "Unit"
+            },
+            {
+                "name": "batch",
+                "type": "text",
+                "label": "Batch"
+            },
+            {
+                "name": "serial",
+                "type": "text",
+                "label": "Serial"
+            },
+            {
+                "name": "best_before",
+                "type": "text",
+                "label": "Best before"
+            }
+        ]
+    },
+    {
+        "name": "confidence",
+        "type": "collection",
+        "label": "Confidence",
+        "spec": [
+            {
+                "name": "overall",
+                "type": "number",
+                "label": "Overall"
+            },
+            {
+                "name": "supplier",
+                "type": "number",
+                "label": "Supplier"
+            },
+            {
+                "name": "delivery",
+                "type": "number",
+                "label": "Delivery"
+            },
+            {
+                "name": "lines",
+                "type": "number",
+                "label": "Lines"
+            }
+        ]
+    },
+    {
+        "name": "warnings",
+        "type": "array",
+        "label": "Warnings",
+        "spec": {
+            "type": "text",
+            "label": "Warning"
+        }
+    }
+]

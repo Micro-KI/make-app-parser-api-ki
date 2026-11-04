@@ -1,0 +1,10 @@
+[
+    {
+        "name": "apiKey",
+        "type": "password",
+        "label": "API key",
+        "editable": true,
+        "required": true,
+        "help": "Enter your API key without the `Bearer` prefix. For example, `pak_live_…` or the public test key `pak_test_X0001`. For details on how to obtain your API key, see the [Parser API KI+ API documentation](https://parser-api.micro-ki.de/doku)."
+    }
+]

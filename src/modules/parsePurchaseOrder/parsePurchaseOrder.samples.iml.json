@@ -1,0 +1,81 @@
+{
+    "schema": "purchaseorder.v1",
+    "source": "ubl_order",
+    "document": {
+        "type": "purchase_order",
+        "page_count": 0,
+        "currency": "EUR"
+    },
+    "buyer": {
+        "name": "Testkunde AG",
+        "address": null,
+        "vat_id": null,
+        "customer_number": null,
+        "contact_name": "Max Einkauf",
+        "contact_department": null,
+        "phone": null,
+        "email": "einkauf@testkunde.example"
+    },
+    "seller": {
+        "name": "Fixture GmbH",
+        "address": null,
+        "vat_id": null,
+        "contact_name": null,
+        "contact_department": null,
+        "phone": null,
+        "email": null
+    },
+    "ship_to": {
+        "name": "Testkunde AG, Lager Nord",
+        "address": "Hafenstraße 9, 20457 Hamburg, DE"
+    },
+    "order": {
+        "number": "PO-TEST-1",
+        "date": "2024-03-15",
+        "delivery_date": null,
+        "reference": null,
+        "delivery_terms": null
+    },
+    "totals": {
+        "line_total": 100,
+        "charges": 0,
+        "allowances": 0,
+        "net": 100,
+        "vat": 19,
+        "gross": 119
+    },
+    "payment_terms": {
+        "text": "Zahlbar innerhalb von 30 Tagen netto."
+    },
+    "notes": [
+        "Bitte Bestellnummer auf dem Lieferschein angeben."
+    ],
+    "lines": [
+        {
+            "seller_item_number": "A-1",
+            "buyer_item_number": "K-100",
+            "gtin": "4012345001235",
+            "description": "Widget",
+            "quantity": 1,
+            "unit": "C62",
+            "unit_price": 100,
+            "vat_rate": null,
+            "net": 100,
+            "gross": null
+        }
+    ],
+    "confidence": {
+        "overall": 1,
+        "buyer": 1,
+        "order": 1,
+        "lines": 1
+    },
+    "warnings": [],
+    "request_id": "req_example",
+    "pricing": {
+        "rule": "structured",
+        "label": "Strukturierte Belege: 1 Credit je Datei."
+    },
+    "billed": 0,
+    "available": 100
+}

@@ -1,0 +1,62 @@
+{
+    "schema": "cv.v1",
+    "source": "mistral",
+    "person": {
+        "given_name": "Alex",
+        "family_name": "Fixture",
+        "email": "alex.fixture@example.com",
+        "phone": null,
+        "address": null,
+        "date_of_birth": null,
+        "nationality": null,
+        "links": []
+    },
+    "summary": "Testdaten, kein echter Lebenslauf.",
+    "experience": [
+        {
+            "employer": "Fixture GmbH",
+            "title": "Test",
+            "location": "Berlin",
+            "start": "2020-01",
+            "end": null,
+            "current": true,
+            "highlights": []
+        }
+    ],
+    "education": [
+        {
+            "institution": "Test-Hochschule",
+            "degree": "B.Sc.",
+            "grade": null,
+            "start": "2016-10",
+            "end": "2020-03"
+        }
+    ],
+    "certifications": [],
+    "skills": [
+        {
+            "name": "PHP",
+            "level": null
+        }
+    ],
+    "languages": [
+        {
+            "name": "Deutsch",
+            "level": "C2"
+        }
+    ],
+    "confidence": {
+        "overall": 1,
+        "person": 1,
+        "experience": 1,
+        "education": 1
+    },
+    "warnings": [],
+    "request_id": "req_example",
+    "pricing": {
+        "rule": "pdf_ocr",
+        "label": "PDF-OCR: 2 Credit je Seite."
+    },
+    "billed": 0,
+    "available": 100
+}

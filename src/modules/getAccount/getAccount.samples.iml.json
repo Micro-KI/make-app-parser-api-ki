@@ -1,0 +1,11 @@
+{
+    "request_id": "req_example",
+    "credits": 100,
+    "available": 100,
+    "alert_threshold": 20,
+    "alert_enabled": true,
+    "live_key_prefix": "pak_live_ab12",
+    "test_key_prefix": "pak_test_cd34",
+    "mail": "konto@example.com",
+    "test": false
+}

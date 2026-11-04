@@ -1,0 +1,270 @@
+[
+    {
+        "name": "schema",
+        "type": "text",
+        "label": "Schema"
+    },
+    {
+        "name": "source",
+        "type": "text",
+        "label": "Source"
+    },
+    {
+        "name": "request_id",
+        "type": "text",
+        "label": "Request ID"
+    },
+    {
+        "name": "billed",
+        "type": "integer",
+        "label": "Credits billed"
+    },
+    {
+        "name": "available",
+        "type": "integer",
+        "label": "Credits available"
+    },
+    {
+        "name": "pricing",
+        "type": "collection",
+        "label": "Pricing",
+        "spec": [
+            {
+                "name": "rule",
+                "type": "text",
+                "label": "Rule"
+            },
+            {
+                "name": "label",
+                "type": "text",
+                "label": "Label"
+            }
+        ]
+    },
+    {
+        "name": "person",
+        "type": "collection",
+        "label": "Person",
+        "spec": [
+            {
+                "name": "given_name",
+                "type": "text",
+                "label": "Given name"
+            },
+            {
+                "name": "family_name",
+                "type": "text",
+                "label": "Family name"
+            },
+            {
+                "name": "email",
+                "type": "text",
+                "label": "Email"
+            },
+            {
+                "name": "phone",
+                "type": "text",
+                "label": "Phone"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Address"
+            },
+            {
+                "name": "date_of_birth",
+                "type": "text",
+                "label": "Date of birth"
+            },
+            {
+                "name": "nationality",
+                "type": "text",
+                "label": "Nationality"
+            },
+            {
+                "name": "links",
+                "type": "array",
+                "label": "Links",
+                "spec": {
+                    "type": "text",
+                    "label": "Link"
+                }
+            }
+        ]
+    },
+    {
+        "name": "summary",
+        "type": "text",
+        "label": "Profile summary"
+    },
+    {
+        "name": "experience",
+        "type": "array",
+        "label": "Work experience",
+        "spec": [
+            {
+                "name": "employer",
+                "type": "text",
+                "label": "Employer"
+            },
+            {
+                "name": "title",
+                "type": "text",
+                "label": "Job title"
+            },
+            {
+                "name": "location",
+                "type": "text",
+                "label": "Location"
+            },
+            {
+                "name": "start",
+                "type": "text",
+                "label": "Start"
+            },
+            {
+                "name": "end",
+                "type": "text",
+                "label": "End"
+            },
+            {
+                "name": "current",
+                "type": "boolean",
+                "label": "Current"
+            },
+            {
+                "name": "highlights",
+                "type": "array",
+                "label": "Bullet points",
+                "spec": {
+                    "type": "text",
+                    "label": "Highlight"
+                }
+            }
+        ]
+    },
+    {
+        "name": "education",
+        "type": "array",
+        "label": "Education",
+        "spec": [
+            {
+                "name": "institution",
+                "type": "text",
+                "label": "Institution"
+            },
+            {
+                "name": "degree",
+                "type": "text",
+                "label": "Degree"
+            },
+            {
+                "name": "grade",
+                "type": "text",
+                "label": "Grade"
+            },
+            {
+                "name": "start",
+                "type": "text",
+                "label": "Start"
+            },
+            {
+                "name": "end",
+                "type": "text",
+                "label": "End"
+            }
+        ]
+    },
+    {
+        "name": "certifications",
+        "type": "array",
+        "label": "Certifications",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "issuer",
+                "type": "text",
+                "label": "Issuer"
+            },
+            {
+                "name": "date",
+                "type": "text",
+                "label": "Date"
+            }
+        ]
+    },
+    {
+        "name": "skills",
+        "type": "array",
+        "label": "Skills",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Skill"
+            },
+            {
+                "name": "level",
+                "type": "text",
+                "label": "Level"
+            }
+        ]
+    },
+    {
+        "name": "languages",
+        "type": "array",
+        "label": "Languages",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Language"
+            },
+            {
+                "name": "level",
+                "type": "text",
+                "label": "Level"
+            }
+        ]
+    },
+    {
+        "name": "confidence",
+        "type": "collection",
+        "label": "Confidence",
+        "spec": [
+            {
+                "name": "overall",
+                "type": "number",
+                "label": "Overall"
+            },
+            {
+                "name": "person",
+                "type": "number",
+                "label": "Person"
+            },
+            {
+                "name": "experience",
+                "type": "number",
+                "label": "Experience"
+            },
+            {
+                "name": "education",
+                "type": "number",
+                "label": "Education"
+            }
+        ]
+    },
+    {
+        "name": "warnings",
+        "type": "array",
+        "label": "Warnings",
+        "spec": {
+            "type": "text",
+            "label": "Warning"
+        }
+    }
+]

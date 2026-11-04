@@ -1,0 +1,355 @@
+[
+    {
+        "name": "schema",
+        "type": "text",
+        "label": "Schema"
+    },
+    {
+        "name": "source",
+        "type": "text",
+        "label": "Source"
+    },
+    {
+        "name": "request_id",
+        "type": "text",
+        "label": "Request ID"
+    },
+    {
+        "name": "billed",
+        "type": "integer",
+        "label": "Credits billed"
+    },
+    {
+        "name": "available",
+        "type": "integer",
+        "label": "Credits available"
+    },
+    {
+        "name": "pricing",
+        "type": "collection",
+        "label": "Pricing",
+        "spec": [
+            {
+                "name": "rule",
+                "type": "text",
+                "label": "Rule"
+            },
+            {
+                "name": "label",
+                "type": "text",
+                "label": "Label"
+            }
+        ]
+    },
+    {
+        "name": "document",
+        "type": "collection",
+        "label": "Document",
+        "spec": [
+            {
+                "name": "type",
+                "type": "text",
+                "label": "Type"
+            },
+            {
+                "name": "page_count",
+                "type": "number",
+                "label": "Page count"
+            },
+            {
+                "name": "currency",
+                "type": "text",
+                "label": "Currency"
+            }
+        ]
+    },
+    {
+        "name": "buyer",
+        "type": "collection",
+        "label": "Buyer",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Address"
+            },
+            {
+                "name": "vat_id",
+                "type": "text",
+                "label": "VAT ID"
+            },
+            {
+                "name": "customer_number",
+                "type": "text",
+                "label": "Customer number"
+            },
+            {
+                "name": "contact_name",
+                "type": "text",
+                "label": "Contact name"
+            },
+            {
+                "name": "contact_department",
+                "type": "text",
+                "label": "Contact department"
+            },
+            {
+                "name": "phone",
+                "type": "text",
+                "label": "Phone"
+            },
+            {
+                "name": "email",
+                "type": "text",
+                "label": "Email"
+            }
+        ]
+    },
+    {
+        "name": "seller",
+        "type": "collection",
+        "label": "Supplier",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Address"
+            },
+            {
+                "name": "vat_id",
+                "type": "text",
+                "label": "VAT ID"
+            },
+            {
+                "name": "contact_name",
+                "type": "text",
+                "label": "Contact name"
+            },
+            {
+                "name": "contact_department",
+                "type": "text",
+                "label": "Contact department"
+            },
+            {
+                "name": "phone",
+                "type": "text",
+                "label": "Phone"
+            },
+            {
+                "name": "email",
+                "type": "text",
+                "label": "Email"
+            }
+        ]
+    },
+    {
+        "name": "ship_to",
+        "type": "collection",
+        "label": "Ship to",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Delivery address"
+            }
+        ]
+    },
+    {
+        "name": "order",
+        "type": "collection",
+        "label": "Order header",
+        "spec": [
+            {
+                "name": "number",
+                "type": "text",
+                "label": "Order number"
+            },
+            {
+                "name": "date",
+                "type": "text",
+                "label": "Order date"
+            },
+            {
+                "name": "delivery_date",
+                "type": "text",
+                "label": "Requested delivery date"
+            },
+            {
+                "name": "reference",
+                "type": "text",
+                "label": "Reference"
+            },
+            {
+                "name": "delivery_terms",
+                "type": "text",
+                "label": "Delivery terms"
+            }
+        ]
+    },
+    {
+        "name": "totals",
+        "type": "collection",
+        "label": "Order totals",
+        "spec": [
+            {
+                "name": "line_total",
+                "type": "number",
+                "label": "Line total"
+            },
+            {
+                "name": "charges",
+                "type": "number",
+                "label": "Charges"
+            },
+            {
+                "name": "allowances",
+                "type": "number",
+                "label": "Allowances"
+            },
+            {
+                "name": "net",
+                "type": "number",
+                "label": "Net"
+            },
+            {
+                "name": "vat",
+                "type": "number",
+                "label": "VAT amount"
+            },
+            {
+                "name": "gross",
+                "type": "number",
+                "label": "Gross"
+            }
+        ]
+    },
+    {
+        "name": "payment_terms",
+        "type": "collection",
+        "label": "Payment terms",
+        "spec": [
+            {
+                "name": "text",
+                "type": "text",
+                "label": "Text"
+            }
+        ]
+    },
+    {
+        "name": "notes",
+        "type": "array",
+        "label": "Notes",
+        "spec": {
+            "type": "text",
+            "label": "Note"
+        }
+    },
+    {
+        "name": "lines",
+        "type": "array",
+        "label": "Lines",
+        "spec": [
+            {
+                "name": "seller_item_number",
+                "type": "text",
+                "label": "Seller item number"
+            },
+            {
+                "name": "buyer_item_number",
+                "type": "text",
+                "label": "Buyer item number"
+            },
+            {
+                "name": "gtin",
+                "type": "text",
+                "label": "GTIN"
+            },
+            {
+                "name": "description",
+                "type": "text",
+                "label": "Description"
+            },
+            {
+                "name": "quantity",
+                "type": "number",
+                "label": "Quantity"
+            },
+            {
+                "name": "unit",
+                "type": "text",
+                "label": "Unit"
+            },
+            {
+                "name": "unit_price",
+                "type": "number",
+                "label": "Unit price"
+            },
+            {
+                "name": "vat_rate",
+                "type": "number",
+                "label": "VAT rate"
+            },
+            {
+                "name": "net",
+                "type": "number",
+                "label": "Net"
+            },
+            {
+                "name": "gross",
+                "type": "number",
+                "label": "Gross"
+            }
+        ]
+    },
+    {
+        "name": "confidence",
+        "type": "collection",
+        "label": "Confidence",
+        "spec": [
+            {
+                "name": "overall",
+                "type": "number",
+                "label": "Overall"
+            },
+            {
+                "name": "buyer",
+                "type": "number",
+                "label": "Buyer"
+            },
+            {
+                "name": "order",
+                "type": "number",
+                "label": "Order"
+            },
+            {
+                "name": "lines",
+                "type": "number",
+                "label": "Lines"
+            }
+        ]
+    },
+    {
+        "name": "warnings",
+        "type": "array",
+        "label": "Warnings",
+        "spec": {
+            "type": "text",
+            "label": "Warning"
+        }
+    }
+]

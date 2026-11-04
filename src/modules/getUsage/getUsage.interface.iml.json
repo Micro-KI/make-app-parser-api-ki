@@ -1,0 +1,57 @@
+[
+    {
+        "name": "request_id",
+        "type": "text",
+        "label": "Request ID"
+    },
+    {
+        "name": "ts",
+        "type": "date",
+        "label": "Timestamp"
+    },
+    {
+        "name": "type",
+        "type": "text",
+        "label": "Document type"
+    },
+    {
+        "name": "status",
+        "type": "integer",
+        "label": "HTTP status"
+    },
+    {
+        "name": "source",
+        "type": "text",
+        "label": "Source"
+    },
+    {
+        "name": "cache",
+        "type": "boolean",
+        "label": "From cache"
+    },
+    {
+        "name": "billed",
+        "type": "integer",
+        "label": "Credits billed"
+    },
+    {
+        "name": "pages",
+        "type": "integer",
+        "label": "Pages"
+    },
+    {
+        "name": "error_code",
+        "type": "text",
+        "label": "Error code"
+    },
+    {
+        "name": "fingerprint",
+        "type": "text",
+        "label": "Fingerprint"
+    },
+    {
+        "name": "lines_ocr",
+        "type": "boolean",
+        "label": "Lines OCR"
+    }
+]

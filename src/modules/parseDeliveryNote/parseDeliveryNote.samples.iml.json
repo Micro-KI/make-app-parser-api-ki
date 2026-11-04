@@ -1,0 +1,57 @@
+{
+    "schema": "deliverynote.v1",
+    "source": "mistral",
+    "document": {
+        "type": "delivery_note",
+        "page_count": 1
+    },
+    "supplier": {
+        "name": "Fixture GmbH",
+        "address": null,
+        "vat_id": null
+    },
+    "ship_to": {
+        "name": "Testkunde AG",
+        "address": null
+    },
+    "delivery": {
+        "number": "LS-TEST-1",
+        "date": "2024-03-15",
+        "order_number": null,
+        "carrier": null,
+        "tracking_number": null,
+        "packing": null
+    },
+    "notes": [
+        "Teillieferung, Rest folgt."
+    ],
+    "lines": [
+        {
+            "seller_item_number": "A-1",
+            "buyer_item_number": null,
+            "gtin": "4012345001235",
+            "description": "Widget",
+            "quantity": 2,
+            "ordered_quantity": null,
+            "outstanding_quantity": null,
+            "unit": "C62",
+            "batch": null,
+            "serial": null,
+            "best_before": null
+        }
+    ],
+    "confidence": {
+        "overall": 1,
+        "supplier": 1,
+        "delivery": 1,
+        "lines": 1
+    },
+    "warnings": [],
+    "request_id": "req_example",
+    "pricing": {
+        "rule": "pdf_ocr",
+        "label": "PDF-OCR: 2 Credit je Seite."
+    },
+    "billed": 0,
+    "available": 100
+}

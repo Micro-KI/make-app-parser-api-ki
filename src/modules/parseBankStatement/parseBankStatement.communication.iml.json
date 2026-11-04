@@ -1,0 +1,23 @@
+{
+    "url": "/bank-statement",
+    "method": "POST",
+    "type": "multipart/form-data",
+    "headers": {
+        "Idempotency-Key": "{{ifempty(parameters.idempotencyKey, omit)}}",
+        "X-Parser-Force": "{{if(parameters.force, '1', omit)}}"
+    },
+    "body": [
+        {
+            "name": "file",
+            "value": {
+                "value": "{{parameters.data}}",
+                "options": {
+                    "filename": "{{parameters.fileName}}"
+                }
+            }
+        }
+    ],
+    "response": {
+        "output": "{{body}}"
+    }
+}

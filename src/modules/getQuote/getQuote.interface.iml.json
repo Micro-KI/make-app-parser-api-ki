@@ -1,0 +1,54 @@
+[
+    {
+        "name": "request_id",
+        "type": "text",
+        "label": "Request ID"
+    },
+    {
+        "name": "needed",
+        "type": "integer",
+        "label": "Credits needed"
+    },
+    {
+        "name": "available",
+        "type": "integer",
+        "label": "Credits available"
+    },
+    {
+        "name": "billable_units",
+        "type": "integer",
+        "label": "Billable units"
+    },
+    {
+        "name": "kind",
+        "type": "text",
+        "label": "Charge kind"
+    },
+    {
+        "name": "page_count",
+        "type": "integer",
+        "label": "Page count"
+    },
+    {
+        "name": "source_hint",
+        "type": "text",
+        "label": "Source hint"
+    },
+    {
+        "name": "pricing",
+        "type": "collection",
+        "label": "Pricing",
+        "spec": [
+            {
+                "name": "rule",
+                "type": "text",
+                "label": "Rule"
+            },
+            {
+                "name": "label",
+                "type": "text",
+                "label": "Label"
+            }
+        ]
+    }
+]

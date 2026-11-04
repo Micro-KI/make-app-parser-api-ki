@@ -1,0 +1,27 @@
+[
+    {
+        "label": "Documents",
+        "modules": [
+            "parseInvoice",
+            "parseCreditNote",
+            "parseDeliveryNote",
+            "parsePurchaseOrder",
+            "parseBankStatement",
+            "parseCv"
+        ]
+    },
+    {
+        "label": "Account",
+        "modules": [
+            "getQuote",
+            "getAccount",
+            "getUsage"
+        ]
+    },
+    {
+        "label": "Other",
+        "modules": [
+            "makeApiCall"
+        ]
+    }
+]

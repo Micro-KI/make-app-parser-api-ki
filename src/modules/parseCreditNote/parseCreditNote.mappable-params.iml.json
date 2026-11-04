@@ -1,0 +1,33 @@
+[
+    {
+        "name": "data",
+        "type": "buffer",
+        "label": "File",
+        "help": "File content mapped from a previous module, for example Gmail or Google Drive.",
+        "required": true,
+        "semantic": "file:data"
+    },
+    {
+        "name": "fileName",
+        "type": "filename",
+        "label": "File name",
+        "help": "File name with extension. For example, `invoice.pdf`.",
+        "required": true,
+        "semantic": "file:name"
+    },
+    {
+        "name": "force",
+        "type": "boolean",
+        "label": "Force fresh read",
+        "help": "Skips the cached result from the last 15 minutes and spends credits again. Sends `X-Parser-Force: 1`.",
+        "default": false,
+        "advanced": true
+    },
+    {
+        "name": "idempotencyKey",
+        "type": "text",
+        "label": "Idempotency key",
+        "help": "Optional unique key per file (`8` to `128` characters: letters, digits, `.`, `_`, `-`) to safely retry a request. If left empty, no `Idempotency-Key` header is sent and identical files are still cached for 15 minutes.",
+        "advanced": true
+    }
+]

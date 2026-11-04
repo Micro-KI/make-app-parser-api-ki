@@ -1,0 +1,13 @@
+{
+    "request_id": "req_example",
+    "needed": 1,
+    "available": 100,
+    "billable_units": 1,
+    "kind": "file",
+    "page_count": 0,
+    "source_hint": "xrechnung",
+    "pricing": {
+        "rule": "structured",
+        "label": "Strukturierte Belege: 1 Credit je Datei."
+    }
+}

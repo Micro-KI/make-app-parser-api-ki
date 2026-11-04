@@ -1,0 +1,156 @@
+{
+    "fileVersion": 1,
+    "generalCodeFiles": {
+        "base": "general/base.iml.json",
+        "common": null,
+        "readme": "general/readme.md",
+        "groups": "modules/groups.json"
+    },
+    "components": {
+        "connection": {
+            "parserApiKi": {
+                "label": "Parser API KI+",
+                "connectionType": "basic",
+                "codeFiles": {
+                    "communication": "connections/parserApiKi/parserApiKi.communication.iml.json",
+                    "params": "connections/parserApiKi/parserApiKi.params.iml.json"
+                }
+            }
+        },
+        "endpoint": {},
+        "function": {},
+        "module": {
+            "parseInvoice": {
+                "label": "Parse an invoice",
+                "description": "Parses an invoice (ZUGFeRD, Factur-X, XRechnung, EDIFACT, PDF or scan) and returns the invoice.v1 JSON. The call stops after 40 seconds.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/parseInvoice/parseInvoice.communication.iml.json",
+                    "mappableParams": "modules/parseInvoice/parseInvoice.mappable-params.iml.json",
+                    "interface": "modules/parseInvoice/parseInvoice.interface.iml.json",
+                    "samples": "modules/parseInvoice/parseInvoice.samples.iml.json"
+                }
+            },
+            "parseCreditNote": {
+                "label": "Parse a credit note",
+                "description": "Parses a credit note and returns the creditnote.v1 JSON. The call stops after 40 seconds.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/parseCreditNote/parseCreditNote.communication.iml.json",
+                    "mappableParams": "modules/parseCreditNote/parseCreditNote.mappable-params.iml.json",
+                    "interface": "modules/parseCreditNote/parseCreditNote.interface.iml.json",
+                    "samples": "modules/parseCreditNote/parseCreditNote.samples.iml.json"
+                }
+            },
+            "parseDeliveryNote": {
+                "label": "Parse a delivery note",
+                "description": "Parses a delivery note (Peppol despatch advice, DESADV, PDF or scan) and returns the deliverynote.v1 JSON. The call stops after 40 seconds.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/parseDeliveryNote/parseDeliveryNote.communication.iml.json",
+                    "mappableParams": "modules/parseDeliveryNote/parseDeliveryNote.mappable-params.iml.json",
+                    "interface": "modules/parseDeliveryNote/parseDeliveryNote.interface.iml.json",
+                    "samples": "modules/parseDeliveryNote/parseDeliveryNote.samples.iml.json"
+                }
+            },
+            "parsePurchaseOrder": {
+                "label": "Parse a purchase order",
+                "description": "Parses a purchase order (UBL Order, PDF or scan) and returns the purchaseorder.v1 JSON. The call stops after 40 seconds.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/parsePurchaseOrder/parsePurchaseOrder.communication.iml.json",
+                    "mappableParams": "modules/parsePurchaseOrder/parsePurchaseOrder.mappable-params.iml.json",
+                    "interface": "modules/parsePurchaseOrder/parsePurchaseOrder.interface.iml.json",
+                    "samples": "modules/parsePurchaseOrder/parsePurchaseOrder.samples.iml.json"
+                }
+            },
+            "parseBankStatement": {
+                "label": "Parse a bank statement",
+                "description": "Parses a bank statement (camt, MT940, MT942, PDF or scan) and returns the bankstatement.v1 JSON. The call stops after 40 seconds.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/parseBankStatement/parseBankStatement.communication.iml.json",
+                    "mappableParams": "modules/parseBankStatement/parseBankStatement.mappable-params.iml.json",
+                    "interface": "modules/parseBankStatement/parseBankStatement.interface.iml.json",
+                    "samples": "modules/parseBankStatement/parseBankStatement.samples.iml.json"
+                }
+            },
+            "parseCv": {
+                "label": "Parse a CV",
+                "description": "Parses a CV and returns the cv.v1 JSON. Every CV is read by the AI. The call stops after 40 seconds.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/parseCv/parseCv.communication.iml.json",
+                    "mappableParams": "modules/parseCv/parseCv.mappable-params.iml.json",
+                    "interface": "modules/parseCv/parseCv.interface.iml.json",
+                    "samples": "modules/parseCv/parseCv.samples.iml.json"
+                }
+            },
+            "getQuote": {
+                "label": "Get a quote",
+                "description": "Returns what parsing the file would cost. Spends no credits.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/getQuote/getQuote.communication.iml.json",
+                    "mappableParams": "modules/getQuote/getQuote.mappable-params.iml.json",
+                    "interface": "modules/getQuote/getQuote.interface.iml.json",
+                    "samples": "modules/getQuote/getQuote.samples.iml.json"
+                }
+            },
+            "getAccount": {
+                "label": "Get an account",
+                "description": "Returns the credit balance, alert threshold, and key prefixes of the account.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/getAccount/getAccount.communication.iml.json",
+                    "mappableParams": "modules/getAccount/getAccount.mappable-params.iml.json",
+                    "interface": "modules/getAccount/getAccount.interface.iml.json",
+                    "samples": "modules/getAccount/getAccount.samples.iml.json"
+                }
+            },
+            "getUsage": {
+                "label": "Search usage entries",
+                "description": "Returns a list of usage entries from today and yesterday.",
+                "moduleType": "search",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/getUsage/getUsage.communication.iml.json",
+                    "mappableParams": "modules/getUsage/getUsage.mappable-params.iml.json",
+                    "interface": "modules/getUsage/getUsage.interface.iml.json",
+                    "samples": "modules/getUsage/getUsage.samples.iml.json"
+                }
+            },
+            "makeApiCall": {
+                "label": "Make an API call",
+                "description": "Performs an arbitrary authorized API call.",
+                "moduleType": "universal",
+                "connection": "parserApiKi",
+                "codeFiles": {
+                    "communication": "modules/makeApiCall/makeApiCall.communication.iml.json",
+                    "mappableParams": "modules/makeApiCall/makeApiCall.mappable-params.iml.json",
+                    "interface": "modules/makeApiCall/makeApiCall.interface.iml.json",
+                    "samples": "modules/makeApiCall/makeApiCall.samples.iml.json"
+                }
+            }
+        },
+        "rpc": {},
+        "webhook": {}
+    },
+    "origins": []
+}

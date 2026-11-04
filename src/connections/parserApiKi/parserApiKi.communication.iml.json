@@ -1,0 +1,30 @@
+{
+    "url": "/account",
+    "method": "GET",
+    "headers": {
+        "Authorization": "Bearer {{parameters.apiKey}}"
+    },
+    "response": {
+        "valid": "{{statusCode == 200}}",
+        "error": {
+            "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
+            "409": {
+                "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
+                "type": "{{if(body.error.code == 'idempotency_key_conflict', 'RuntimeError', 'RateLimitError')}}"
+            },
+            "500": {
+                "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
+                "type": "{{if(body.error.code == 'account_corrupt' || body.error.code == 'capture_corrupt', 'RuntimeError', 'ConnectionError')}}"
+            }
+        },
+        "metadata": {
+            "type": "email",
+            "value": "{{body.mail}}"
+        }
+    },
+    "log": {
+        "sanitize": [
+            "request.headers.authorization"
+        ]
+    }
+}

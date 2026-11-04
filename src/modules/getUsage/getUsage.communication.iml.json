@@ -1,0 +1,12 @@
+{
+    "url": "/usage",
+    "method": "GET",
+    "qs": {
+        "type": "{{ifempty(parameters.type, omit)}}"
+    },
+    "response": {
+        "iterate": "{{body.entries}}",
+        "output": "{{item}}",
+        "limit": "{{parameters.limit}}"
+    }
+}

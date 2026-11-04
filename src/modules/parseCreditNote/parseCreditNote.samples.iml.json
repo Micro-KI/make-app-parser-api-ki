@@ -1,0 +1,132 @@
+{
+    "schema": "creditnote.v1",
+    "source": "xrechnung",
+    "document": {
+        "type": "credit_note",
+        "page_count": 0,
+        "currency": "EUR"
+    },
+    "vendor": {
+        "name": "Fixture GmbH",
+        "payee_name": null,
+        "address": "Musterstraße 1, 10115 Berlin, DE",
+        "vat_id": "DE123456789",
+        "tax_number": null,
+        "supplier_number": null,
+        "registration_number": null,
+        "gln": null,
+        "iban": "DE02120300000000202051",
+        "account_name": null,
+        "bic": null,
+        "contact_name": "Erika Muster",
+        "contact_department": "Buchhaltung",
+        "phone": "+49 30 1234567",
+        "email": "rechnung@fixture.example"
+    },
+    "customer": {
+        "name": "Testkunde AG",
+        "address": "Beispielweg 5, 20095 Hamburg, DE",
+        "vat_id": null,
+        "customer_number": "K-1001",
+        "registration_number": null,
+        "gln": null,
+        "contact_name": null,
+        "contact_department": null,
+        "phone": null,
+        "email": null
+    },
+    "credit_note": {
+        "number": "GS-TEST-1",
+        "type_code": "381",
+        "date": "2024-03-15",
+        "due_date": "2024-04-14",
+        "preceding_number": "RE-TEST-0",
+        "preceding_date": "2024-02-01",
+        "reason": "Leistung erbracht im März 2024.",
+        "order_number": "PO-4711",
+        "contract_number": null,
+        "buyer_reference": "04011000-12345-03",
+        "accounting_cost": null,
+        "delivery_note_number": null,
+        "payment_reference": "GS-TEST-1",
+        "service_period": "2024-03-01/2024-03-31"
+    },
+    "delivery": {
+        "name": null,
+        "address": null,
+        "gln": null
+    },
+    "totals": {
+        "line_total": 100,
+        "charges": 0,
+        "allowances": 0,
+        "adjustments": [],
+        "net": 100,
+        "vat": 19,
+        "gross": 119,
+        "prepaid": 0,
+        "due": 119,
+        "vat_rate": 19,
+        "vat_breakdown": [
+            {
+                "rate": 19,
+                "category": "S",
+                "net": 100,
+                "vat": 19,
+                "exemption_reason": null
+            }
+        ]
+    },
+    "payment": {
+        "method": "58",
+        "method_text": "SEPA-Überweisung"
+    },
+    "payment_terms": {
+        "text": "Zahlbar innerhalb von 30 Tagen ohne Abzug.",
+        "discounts": [
+            {
+                "percent": 2,
+                "days": 10,
+                "date": null,
+                "base_amount": null
+            }
+        ]
+    },
+    "notes": [
+        "Leistung erbracht im März 2024."
+    ],
+    "lines": [
+        {
+            "seller_item_number": "A-1",
+            "buyer_item_number": null,
+            "gtin": "4012345001235",
+            "description": "Testposition",
+            "details": null,
+            "quantity": 1,
+            "unit": "C62",
+            "unit_price": 100,
+            "vat_rate": 19,
+            "net": 100,
+            "gross": null,
+            "order_line": null,
+            "account": null,
+            "service_period": null,
+            "note": null
+        }
+    ],
+    "confidence": {
+        "overall": 1,
+        "vendor": 1,
+        "credit_note": 1,
+        "totals": 1,
+        "lines": 1
+    },
+    "warnings": [],
+    "request_id": "req_example",
+    "pricing": {
+        "rule": "structured",
+        "label": "Strukturierte Belege: 1 Credit je Datei."
+    },
+    "billed": 0,
+    "available": 100
+}

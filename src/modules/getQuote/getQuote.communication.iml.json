@@ -1,0 +1,27 @@
+{
+    "url": "/quote",
+    "method": "POST",
+    "type": "multipart/form-data",
+    "headers": {
+        "X-Parser-Force": "{{if(parameters.force, '1', omit)}}",
+        "X-Parser-Lines": "{{if(parameters.type == 'invoice' && parameters.linesOcr, 'ocr', omit)}}"
+    },
+    "body": [
+        {
+            "name": "file",
+            "value": {
+                "value": "{{parameters.data}}",
+                "options": {
+                    "filename": "{{parameters.fileName}}"
+                }
+            }
+        },
+        {
+            "name": "type",
+            "value": "{{parameters.type}}"
+        }
+    ],
+    "response": {
+        "output": "{{body}}"
+    }
+}

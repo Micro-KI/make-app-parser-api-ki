@@ -1,0 +1,43 @@
+[
+    {
+        "name": "type",
+        "type": "select",
+        "label": "Document type",
+        "help": "Filter usage entries by document type. If left empty, all document types are returned.",
+        "required": false,
+        "mappable": false,
+        "options": [
+            {
+                "label": "Invoice",
+                "value": "invoice"
+            },
+            {
+                "label": "Credit note",
+                "value": "credit-note"
+            },
+            {
+                "label": "Delivery note",
+                "value": "delivery-note"
+            },
+            {
+                "label": "Purchase order",
+                "value": "purchase-order"
+            },
+            {
+                "label": "Bank statement",
+                "value": "bank-statement"
+            },
+            {
+                "label": "CV",
+                "value": "cv"
+            }
+        ]
+    },
+    {
+        "name": "limit",
+        "type": "uinteger",
+        "label": "Limit",
+        "help": "Maximum number of results to return and work with during one execution cycle. For information about setting limits, see [our Help Center](https://help.make.com/types-of-modules#b3ZEQ).",
+        "default": 10
+    }
+]

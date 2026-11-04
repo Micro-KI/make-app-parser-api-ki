@@ -1,0 +1,66 @@
+{
+    "schema": "bankstatement.v1",
+    "source": "camt",
+    "document": {
+        "type": "bank_statement",
+        "page_count": 0,
+        "currency": "EUR"
+    },
+    "account": {
+        "iban": "DE02120300000000202051",
+        "bic": "BYLADEM1001",
+        "holder": "Fixture GmbH",
+        "bank_name": null
+    },
+    "statement": {
+        "number": "3",
+        "date": "2024-04-01"
+    },
+    "period": {
+        "from": "2024-03-01",
+        "to": "2024-03-31"
+    },
+    "balances": {
+        "opening": 1000,
+        "closing": 1119
+    },
+    "accounts": [],
+    "transactions": [
+        {
+            "account_iban": null,
+            "booking_date": "2024-03-15",
+            "value_date": "2024-03-15",
+            "amount": 119,
+            "currency": "EUR",
+            "original_amount": null,
+            "original_currency": null,
+            "exchange_rate": null,
+            "charges": null,
+            "debit_credit": "CRDT",
+            "status": "booked",
+            "counterparty": "Kunde",
+            "iban": null,
+            "purpose": "RE-TEST-1",
+            "booking_text": "SEPA-Gutschrift",
+            "end_to_end_id": null,
+            "mandate_id": null,
+            "return_reason": null,
+            "bank_reference": "BANK-REF-1",
+            "bank_transaction_code": "PMNT-RCDT-ESCT",
+            "gvc": "166"
+        }
+    ],
+    "confidence": {
+        "overall": 1,
+        "account": 1,
+        "transactions": 1
+    },
+    "warnings": [],
+    "request_id": "req_example",
+    "pricing": {
+        "rule": "structured",
+        "label": "Strukturierte Belege: 1 Credit je Datei."
+    },
+    "billed": 0,
+    "available": 100
+}

@@ -1,0 +1,68 @@
+[
+    {
+        "name": "type",
+        "type": "select",
+        "label": "Document type",
+        "help": "Document type to calculate the price for. For example, `credit-note`.",
+        "required": true,
+        "mappable": false,
+        "options": [
+            {
+                "label": "Invoice",
+                "value": "invoice"
+            },
+            {
+                "label": "Credit note",
+                "value": "credit-note"
+            },
+            {
+                "label": "Delivery note",
+                "value": "delivery-note"
+            },
+            {
+                "label": "Purchase order",
+                "value": "purchase-order"
+            },
+            {
+                "label": "Bank statement",
+                "value": "bank-statement"
+            },
+            {
+                "label": "CV",
+                "value": "cv"
+            }
+        ]
+    },
+    {
+        "name": "data",
+        "type": "buffer",
+        "label": "File",
+        "help": "File content mapped from a previous module, for example Gmail or Google Drive.",
+        "required": true,
+        "semantic": "file:data"
+    },
+    {
+        "name": "fileName",
+        "type": "filename",
+        "label": "File name",
+        "help": "File name with extension. For example, `invoice.pdf`.",
+        "required": true,
+        "semantic": "file:name"
+    },
+    {
+        "name": "linesOcr",
+        "type": "boolean",
+        "label": "Read lines with OCR",
+        "help": "Includes OCR line-item extraction in the quote when **Document type** is `invoice`. Sends `X-Parser-Lines: ocr`.",
+        "default": false,
+        "advanced": true
+    },
+    {
+        "name": "force",
+        "type": "boolean",
+        "label": "Force fresh read",
+        "help": "Calculates the price for a fresh read instead of a cached result. Sends `X-Parser-Force: 1`. Getting a quote spends no credits.",
+        "default": false,
+        "advanced": true
+    }
+]

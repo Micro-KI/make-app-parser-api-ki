@@ -1,0 +1,47 @@
+[
+    {
+        "name": "request_id",
+        "type": "text",
+        "label": "Request ID"
+    },
+    {
+        "name": "credits",
+        "type": "integer",
+        "label": "Credits"
+    },
+    {
+        "name": "available",
+        "type": "integer",
+        "label": "Credits available"
+    },
+    {
+        "name": "alert_threshold",
+        "type": "integer",
+        "label": "Alert threshold"
+    },
+    {
+        "name": "alert_enabled",
+        "type": "boolean",
+        "label": "Alert enabled"
+    },
+    {
+        "name": "live_key_prefix",
+        "type": "text",
+        "label": "Live key prefix"
+    },
+    {
+        "name": "test_key_prefix",
+        "type": "text",
+        "label": "Test key prefix"
+    },
+    {
+        "name": "mail",
+        "type": "email",
+        "label": "Email address"
+    },
+    {
+        "name": "test",
+        "type": "boolean",
+        "label": "Test key"
+    }
+]

@@ -1,0 +1,25 @@
+{
+    "baseUrl": "https://parser-api.micro-ki.de/api/v1",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}",
+        "Accept": "application/json"
+    },
+    "response": {
+        "error": {
+            "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
+            "409": {
+                "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
+                "type": "{{if(body.error.code == 'idempotency_key_conflict', 'RuntimeError', 'RateLimitError')}}"
+            },
+            "500": {
+                "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
+                "type": "{{if(body.error.code == 'account_corrupt' || body.error.code == 'capture_corrupt', 'RuntimeError', 'ConnectionError')}}"
+            }
+        }
+    },
+    "log": {
+        "sanitize": [
+            "request.headers.authorization"
+        ]
+    }
+}

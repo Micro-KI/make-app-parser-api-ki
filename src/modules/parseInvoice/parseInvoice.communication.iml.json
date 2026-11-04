@@ -1,0 +1,24 @@
+{
+    "url": "/invoice",
+    "method": "POST",
+    "type": "multipart/form-data",
+    "headers": {
+        "Idempotency-Key": "{{ifempty(parameters.idempotencyKey, omit)}}",
+        "X-Parser-Force": "{{if(parameters.force, '1', omit)}}",
+        "X-Parser-Lines": "{{if(parameters.linesOcr, 'ocr', omit)}}"
+    },
+    "body": [
+        {
+            "name": "file",
+            "value": {
+                "value": "{{parameters.data}}",
+                "options": {
+                    "filename": "{{parameters.fileName}}"
+                }
+            }
+        }
+    ],
+    "response": {
+        "output": "{{body}}"
+    }
+}

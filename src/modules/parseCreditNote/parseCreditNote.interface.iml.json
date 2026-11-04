@@ -1,0 +1,613 @@
+[
+    {
+        "name": "schema",
+        "type": "text",
+        "label": "Schema"
+    },
+    {
+        "name": "source",
+        "type": "text",
+        "label": "Source"
+    },
+    {
+        "name": "request_id",
+        "type": "text",
+        "label": "Request ID"
+    },
+    {
+        "name": "billed",
+        "type": "integer",
+        "label": "Credits billed"
+    },
+    {
+        "name": "available",
+        "type": "integer",
+        "label": "Credits available"
+    },
+    {
+        "name": "pricing",
+        "type": "collection",
+        "label": "Pricing",
+        "spec": [
+            {
+                "name": "rule",
+                "type": "text",
+                "label": "Rule"
+            },
+            {
+                "name": "label",
+                "type": "text",
+                "label": "Label"
+            }
+        ]
+    },
+    {
+        "name": "document",
+        "type": "collection",
+        "label": "Document",
+        "spec": [
+            {
+                "name": "type",
+                "type": "text",
+                "label": "Type"
+            },
+            {
+                "name": "page_count",
+                "type": "number",
+                "label": "Page count"
+            },
+            {
+                "name": "currency",
+                "type": "text",
+                "label": "Currency"
+            }
+        ]
+    },
+    {
+        "name": "vendor",
+        "type": "collection",
+        "label": "Supplier",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "payee_name",
+                "type": "text",
+                "label": "Payee name"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Address"
+            },
+            {
+                "name": "vat_id",
+                "type": "text",
+                "label": "VAT ID"
+            },
+            {
+                "name": "tax_number",
+                "type": "text",
+                "label": "Tax number"
+            },
+            {
+                "name": "supplier_number",
+                "type": "text",
+                "label": "Supplier number"
+            },
+            {
+                "name": "registration_number",
+                "type": "text",
+                "label": "Registration number"
+            },
+            {
+                "name": "gln",
+                "type": "text",
+                "label": "GLN"
+            },
+            {
+                "name": "iban",
+                "type": "text",
+                "label": "IBAN"
+            },
+            {
+                "name": "account_name",
+                "type": "text",
+                "label": "Account name"
+            },
+            {
+                "name": "bic",
+                "type": "text",
+                "label": "BIC"
+            },
+            {
+                "name": "contact_name",
+                "type": "text",
+                "label": "Contact name"
+            },
+            {
+                "name": "contact_department",
+                "type": "text",
+                "label": "Contact department"
+            },
+            {
+                "name": "phone",
+                "type": "text",
+                "label": "Phone"
+            },
+            {
+                "name": "email",
+                "type": "text",
+                "label": "Email"
+            }
+        ]
+    },
+    {
+        "name": "customer",
+        "type": "collection",
+        "label": "Customer",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Address"
+            },
+            {
+                "name": "vat_id",
+                "type": "text",
+                "label": "VAT ID"
+            },
+            {
+                "name": "customer_number",
+                "type": "text",
+                "label": "Customer number"
+            },
+            {
+                "name": "registration_number",
+                "type": "text",
+                "label": "Registration number"
+            },
+            {
+                "name": "gln",
+                "type": "text",
+                "label": "GLN"
+            },
+            {
+                "name": "contact_name",
+                "type": "text",
+                "label": "Contact name"
+            },
+            {
+                "name": "contact_department",
+                "type": "text",
+                "label": "Contact department"
+            },
+            {
+                "name": "phone",
+                "type": "text",
+                "label": "Phone"
+            },
+            {
+                "name": "email",
+                "type": "text",
+                "label": "Email"
+            }
+        ]
+    },
+    {
+        "name": "credit_note",
+        "type": "collection",
+        "label": "Credit note header",
+        "spec": [
+            {
+                "name": "number",
+                "type": "text",
+                "label": "Credit note number"
+            },
+            {
+                "name": "type_code",
+                "type": "text",
+                "label": "Type code"
+            },
+            {
+                "name": "date",
+                "type": "text",
+                "label": "Credit note date"
+            },
+            {
+                "name": "due_date",
+                "type": "text",
+                "label": "Due date"
+            },
+            {
+                "name": "preceding_number",
+                "type": "text",
+                "label": "Preceding number"
+            },
+            {
+                "name": "preceding_date",
+                "type": "text",
+                "label": "Preceding date"
+            },
+            {
+                "name": "reason",
+                "type": "text",
+                "label": "Reason"
+            },
+            {
+                "name": "order_number",
+                "type": "text",
+                "label": "Order number"
+            },
+            {
+                "name": "contract_number",
+                "type": "text",
+                "label": "Contract number"
+            },
+            {
+                "name": "buyer_reference",
+                "type": "text",
+                "label": "Buyer reference"
+            },
+            {
+                "name": "accounting_cost",
+                "type": "text",
+                "label": "Accounting cost"
+            },
+            {
+                "name": "delivery_note_number",
+                "type": "text",
+                "label": "Delivery note number"
+            },
+            {
+                "name": "payment_reference",
+                "type": "text",
+                "label": "Payment reference"
+            },
+            {
+                "name": "service_period",
+                "type": "text",
+                "label": "Service period"
+            }
+        ]
+    },
+    {
+        "name": "totals",
+        "type": "collection",
+        "label": "Totals",
+        "spec": [
+            {
+                "name": "line_total",
+                "type": "number",
+                "label": "Line total"
+            },
+            {
+                "name": "charges",
+                "type": "number",
+                "label": "Charges"
+            },
+            {
+                "name": "allowances",
+                "type": "number",
+                "label": "Allowances"
+            },
+            {
+                "name": "adjustments",
+                "type": "array",
+                "label": "Adjustments",
+                "spec": [
+                    {
+                        "name": "kind",
+                        "type": "text",
+                        "label": "Kind"
+                    },
+                    {
+                        "name": "amount",
+                        "type": "number",
+                        "label": "Amount"
+                    },
+                    {
+                        "name": "percent",
+                        "type": "number",
+                        "label": "Percent"
+                    },
+                    {
+                        "name": "reason",
+                        "type": "text",
+                        "label": "Reason"
+                    },
+                    {
+                        "name": "reason_code",
+                        "type": "text",
+                        "label": "Reason code"
+                    },
+                    {
+                        "name": "vat_rate",
+                        "type": "number",
+                        "label": "VAT rate"
+                    }
+                ]
+            },
+            {
+                "name": "net",
+                "type": "number",
+                "label": "Net"
+            },
+            {
+                "name": "vat",
+                "type": "number",
+                "label": "Total VAT"
+            },
+            {
+                "name": "gross",
+                "type": "number",
+                "label": "Gross"
+            },
+            {
+                "name": "prepaid",
+                "type": "number",
+                "label": "Prepaid"
+            },
+            {
+                "name": "due",
+                "type": "number",
+                "label": "Due"
+            },
+            {
+                "name": "vat_rate",
+                "type": "number",
+                "label": "VAT rate"
+            },
+            {
+                "name": "vat_breakdown",
+                "type": "array",
+                "label": "VAT breakdown",
+                "spec": [
+                    {
+                        "name": "rate",
+                        "type": "number",
+                        "label": "Rate"
+                    },
+                    {
+                        "name": "category",
+                        "type": "text",
+                        "label": "Tax category"
+                    },
+                    {
+                        "name": "net",
+                        "type": "number",
+                        "label": "Net"
+                    },
+                    {
+                        "name": "vat",
+                        "type": "number",
+                        "label": "VAT"
+                    },
+                    {
+                        "name": "exemption_reason",
+                        "type": "text",
+                        "label": "Exemption reason"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "delivery",
+        "type": "collection",
+        "label": "Delivery",
+        "spec": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "address",
+                "type": "text",
+                "label": "Delivery address"
+            },
+            {
+                "name": "gln",
+                "type": "text",
+                "label": "GLN"
+            }
+        ]
+    },
+    {
+        "name": "payment",
+        "type": "collection",
+        "label": "Payment",
+        "spec": [
+            {
+                "name": "method",
+                "type": "text",
+                "label": "Method"
+            },
+            {
+                "name": "method_text",
+                "type": "text",
+                "label": "Method text"
+            }
+        ]
+    },
+    {
+        "name": "payment_terms",
+        "type": "collection",
+        "label": "Payment terms",
+        "spec": [
+            {
+                "name": "text",
+                "type": "text",
+                "label": "Text"
+            },
+            {
+                "name": "discounts",
+                "type": "array",
+                "label": "Discounts",
+                "spec": [
+                    {
+                        "name": "percent",
+                        "type": "number",
+                        "label": "Percent"
+                    },
+                    {
+                        "name": "days",
+                        "type": "integer",
+                        "label": "Days"
+                    },
+                    {
+                        "name": "date",
+                        "type": "text",
+                        "label": "Date"
+                    },
+                    {
+                        "name": "base_amount",
+                        "type": "number",
+                        "label": "Base amount"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "notes",
+        "type": "array",
+        "label": "Notes",
+        "spec": {
+            "type": "text",
+            "label": "Note"
+        }
+    },
+    {
+        "name": "lines",
+        "type": "array",
+        "label": "Lines",
+        "spec": [
+            {
+                "name": "seller_item_number",
+                "type": "text",
+                "label": "Seller item number"
+            },
+            {
+                "name": "buyer_item_number",
+                "type": "text",
+                "label": "Buyer item number"
+            },
+            {
+                "name": "gtin",
+                "type": "text",
+                "label": "GTIN"
+            },
+            {
+                "name": "description",
+                "type": "text",
+                "label": "Description"
+            },
+            {
+                "name": "details",
+                "type": "text",
+                "label": "Details"
+            },
+            {
+                "name": "quantity",
+                "type": "number",
+                "label": "Quantity"
+            },
+            {
+                "name": "unit",
+                "type": "text",
+                "label": "Unit"
+            },
+            {
+                "name": "unit_price",
+                "type": "number",
+                "label": "Unit price"
+            },
+            {
+                "name": "vat_rate",
+                "type": "number",
+                "label": "VAT rate"
+            },
+            {
+                "name": "net",
+                "type": "number",
+                "label": "Net"
+            },
+            {
+                "name": "gross",
+                "type": "number",
+                "label": "Gross"
+            },
+            {
+                "name": "order_line",
+                "type": "text",
+                "label": "Order line"
+            },
+            {
+                "name": "account",
+                "type": "text",
+                "label": "Account"
+            },
+            {
+                "name": "service_period",
+                "type": "text",
+                "label": "Service period"
+            },
+            {
+                "name": "note",
+                "type": "text",
+                "label": "Note"
+            }
+        ]
+    },
+    {
+        "name": "confidence",
+        "type": "collection",
+        "label": "Confidence",
+        "spec": [
+            {
+                "name": "overall",
+                "type": "number",
+                "label": "Overall"
+            },
+            {
+                "name": "vendor",
+                "type": "number",
+                "label": "Vendor"
+            },
+            {
+                "name": "credit_note",
+                "type": "number",
+                "label": "Credit note"
+            },
+            {
+                "name": "totals",
+                "type": "number",
+                "label": "Totals"
+            },
+            {
+                "name": "lines",
+                "type": "number",
+                "label": "Lines"
+            }
+        ]
+    },
+    {
+        "name": "warnings",
+        "type": "array",
+        "label": "Warnings",
+        "spec": {
+            "type": "text",
+            "label": "Warning"
+        }
+    }
+]

@@ -1,0 +1,349 @@
+[
+    {
+        "name": "schema",
+        "type": "text",
+        "label": "Schema"
+    },
+    {
+        "name": "source",
+        "type": "text",
+        "label": "Source"
+    },
+    {
+        "name": "request_id",
+        "type": "text",
+        "label": "Request ID"
+    },
+    {
+        "name": "billed",
+        "type": "integer",
+        "label": "Credits billed"
+    },
+    {
+        "name": "available",
+        "type": "integer",
+        "label": "Credits available"
+    },
+    {
+        "name": "pricing",
+        "type": "collection",
+        "label": "Pricing",
+        "spec": [
+            {
+                "name": "rule",
+                "type": "text",
+                "label": "Rule"
+            },
+            {
+                "name": "label",
+                "type": "text",
+                "label": "Label"
+            }
+        ]
+    },
+    {
+        "name": "document",
+        "type": "collection",
+        "label": "Document",
+        "spec": [
+            {
+                "name": "type",
+                "type": "text",
+                "label": "Type"
+            },
+            {
+                "name": "page_count",
+                "type": "number",
+                "label": "Page count"
+            },
+            {
+                "name": "currency",
+                "type": "text",
+                "label": "Currency"
+            }
+        ]
+    },
+    {
+        "name": "account",
+        "type": "collection",
+        "label": "Account",
+        "spec": [
+            {
+                "name": "iban",
+                "type": "text",
+                "label": "IBAN"
+            },
+            {
+                "name": "bic",
+                "type": "text",
+                "label": "BIC"
+            },
+            {
+                "name": "holder",
+                "type": "text",
+                "label": "Account holder"
+            },
+            {
+                "name": "bank_name",
+                "type": "text",
+                "label": "Bank name"
+            }
+        ]
+    },
+    {
+        "name": "statement",
+        "type": "collection",
+        "label": "Statement header",
+        "spec": [
+            {
+                "name": "number",
+                "type": "text",
+                "label": "Number"
+            },
+            {
+                "name": "date",
+                "type": "text",
+                "label": "Date"
+            }
+        ]
+    },
+    {
+        "name": "period",
+        "type": "collection",
+        "label": "Statement period",
+        "spec": [
+            {
+                "name": "from",
+                "type": "text",
+                "label": "Start"
+            },
+            {
+                "name": "to",
+                "type": "text",
+                "label": "End"
+            }
+        ]
+    },
+    {
+        "name": "balances",
+        "type": "collection",
+        "label": "Balances",
+        "spec": [
+            {
+                "name": "opening",
+                "type": "number",
+                "label": "Opening balance"
+            },
+            {
+                "name": "closing",
+                "type": "number",
+                "label": "Closing balance"
+            }
+        ]
+    },
+    {
+        "name": "accounts",
+        "type": "array",
+        "label": "Accounts",
+        "spec": [
+            {
+                "name": "iban",
+                "type": "text",
+                "label": "IBAN"
+            },
+            {
+                "name": "bic",
+                "type": "text",
+                "label": "BIC"
+            },
+            {
+                "name": "holder",
+                "type": "text",
+                "label": "Holder"
+            },
+            {
+                "name": "bank_name",
+                "type": "text",
+                "label": "Bank name"
+            },
+            {
+                "name": "currency",
+                "type": "text",
+                "label": "Currency"
+            },
+            {
+                "name": "statement_number",
+                "type": "text",
+                "label": "Statement number"
+            },
+            {
+                "name": "statement_date",
+                "type": "text",
+                "label": "Statement date"
+            },
+            {
+                "name": "period_from",
+                "type": "text",
+                "label": "Period from"
+            },
+            {
+                "name": "period_to",
+                "type": "text",
+                "label": "Period to"
+            },
+            {
+                "name": "opening_balance",
+                "type": "number",
+                "label": "Opening balance"
+            },
+            {
+                "name": "closing_balance",
+                "type": "number",
+                "label": "Closing balance"
+            }
+        ]
+    },
+    {
+        "name": "transactions",
+        "type": "array",
+        "label": "Transactions",
+        "spec": [
+            {
+                "name": "account_iban",
+                "type": "text",
+                "label": "Account IBAN"
+            },
+            {
+                "name": "booking_date",
+                "type": "text",
+                "label": "Booking date"
+            },
+            {
+                "name": "value_date",
+                "type": "text",
+                "label": "Value date"
+            },
+            {
+                "name": "amount",
+                "type": "number",
+                "label": "Amount"
+            },
+            {
+                "name": "currency",
+                "type": "text",
+                "label": "Currency"
+            },
+            {
+                "name": "original_amount",
+                "type": "number",
+                "label": "Original amount"
+            },
+            {
+                "name": "original_currency",
+                "type": "text",
+                "label": "Original currency"
+            },
+            {
+                "name": "exchange_rate",
+                "type": "number",
+                "label": "Exchange rate"
+            },
+            {
+                "name": "charges",
+                "type": "number",
+                "label": "Charges"
+            },
+            {
+                "name": "debit_credit",
+                "type": "text",
+                "label": "Debit credit"
+            },
+            {
+                "name": "status",
+                "type": "text",
+                "label": "Status"
+            },
+            {
+                "name": "counterparty",
+                "type": "text",
+                "label": "Counterparty"
+            },
+            {
+                "name": "iban",
+                "type": "text",
+                "label": "IBAN"
+            },
+            {
+                "name": "purpose",
+                "type": "text",
+                "label": "Remittance information"
+            },
+            {
+                "name": "booking_text",
+                "type": "text",
+                "label": "Booking text"
+            },
+            {
+                "name": "end_to_end_id",
+                "type": "text",
+                "label": "End-to-end reference"
+            },
+            {
+                "name": "mandate_id",
+                "type": "text",
+                "label": "Mandate ID"
+            },
+            {
+                "name": "return_reason",
+                "type": "text",
+                "label": "Return reason"
+            },
+            {
+                "name": "bank_reference",
+                "type": "text",
+                "label": "Bank reference"
+            },
+            {
+                "name": "bank_transaction_code",
+                "type": "text",
+                "label": "Bank transaction code"
+            },
+            {
+                "name": "gvc",
+                "type": "text",
+                "label": "GVC"
+            }
+        ]
+    },
+    {
+        "name": "confidence",
+        "type": "collection",
+        "label": "Confidence",
+        "spec": [
+            {
+                "name": "overall",
+                "type": "number",
+                "label": "Overall"
+            },
+            {
+                "name": "account",
+                "type": "number",
+                "label": "Account"
+            },
+            {
+                "name": "transactions",
+                "type": "number",
+                "label": "Transactions"
+            }
+        ]
+    },
+    {
+        "name": "warnings",
+        "type": "array",
+        "label": "Warnings",
+        "spec": {
+            "type": "text",
+            "label": "Warning"
+        }
+    }
+]

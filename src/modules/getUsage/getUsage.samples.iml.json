@@ -1,0 +1,13 @@
+{
+    "request_id": "req_earlier",
+    "ts": "2026-11-04T14:00:00+01:00",
+    "type": "invoice",
+    "status": 200,
+    "source": "xrechnung",
+    "cache": false,
+    "billed": 1,
+    "pages": 0,
+    "error_code": null,
+    "fingerprint": "ab12cd34",
+    "lines_ocr": false
+}
