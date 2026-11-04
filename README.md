@@ -42,7 +42,11 @@ Interne Namen (`parseInvoice`, `parserApiKi`, `data`, `fileName`) nicht mehr umb
 2. Die VS-Code-Erweiterung **Make Apps SDK** installieren, den API-Token von Make nach `.secrets/apikey` legen (der Ordner ist in `.gitignore`).
 3. In `src/makecomapp.json` unter `origins` die Zone eintragen, zum Beispiel `https://eu1.make.com/api`, plus `appId` und `appVersion`. Die Erweiterung kann den Eintrag auch anlegen. `idMapping` nicht von Hand pflegen.
 4. `src/makecomapp.json` rechtsklicken und **Deploy to Make** wählen.
-5. Mit `pak_test_X0001` und einem Live-Key je ein kurzes PDF und eine E-Rechnung durch **Parse an invoice** schicken. Die Merknummer bleibt leer, dann geht kein `Idempotency-Key` mit. Dieselbe Datei erkennt der Server 15 Minuten lang auch ohne Merknummer. Für eine eigene Nummer den Wert im Modul eintragen: 8 bis 128 Zeichen, pro Datei ein eigener Wert, bei einer Wiederholung derselbe.
+5. Mit `pak_test_X0001` und einem Live-Key je ein kurzes PDF und eine E-Rechnung durch **Parse an invoice** schicken. Zum Testen ohne eigenes E-Mail- oder Drive-Modul setzt man **HTTP → Download a file** vor das Modul und mappt daraus **`Data`** auf **File** sowie **`File name`** auf **File name**. Öffentliche Beispiel-Rechnungen (ohne Login abrufbar):
+   - ZUGFeRD-PDF: `https://raw.githubusercontent.com/ZUGFeRD/mustangproject/master/library/src/test/resources/MustangGnuaccountingBeispielRE-20170509_505.pdf`
+   - UBL/XRechnung-XML: `https://raw.githubusercontent.com/ConnectingEurope/eInvoicing-EN16931/master/ubl/examples/ubl-tc434-example1.xml`
+   - Zusätzlich liegen im Ordner `samples/` dieses Repos synthetische Testdateien für alle sechs Dokumenttypen (`invoice.pdf`, `invoice.xml`, `credit-note.pdf`, `delivery-note.pdf`, `purchase-order.pdf`, `bank-statement.pdf`, `cv.pdf`).
+   Die Merknummer bleibt leer, dann geht kein `Idempotency-Key` mit. Dieselbe Datei erkennt der Server 15 Minuten lang auch ohne Merknummer. Für eine eigene Nummer den Wert im Modul eintragen: 8 bis 128 Zeichen, pro Datei ein eigener Wert, bei einer Wiederholung derselbe.
 6. Den Invite-Link aus Make auf `/make` und im Konto unter Anbindung neben den Blueprint legen. Solange der Link fehlt, bleibt die Website unverändert.
 7. Für den öffentlichen Katalog dieselbe App bei Make zur Prüfung geben.
 
