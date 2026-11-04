@@ -152,5 +152,66 @@
         "rpc": {},
         "webhook": {}
     },
-    "origins": []
+    "origins": [
+        {
+            "label": "Make EU1",
+            "baseUrl": "https://eu1.make.com/api",
+            "appId": "parser-api-ki-m0evy9",
+            "appVersion": 1,
+            "apikeyFile": "../.secrets/apikey",
+            "idMapping": {
+                "connection": [
+                    {
+                        "local": "parserApiKi",
+                        "remote": "parser-api-ki-m0evy9"
+                    }
+                ],
+                "module": [
+                    {
+                        "local": "parseInvoice",
+                        "remote": "parseInvoice"
+                    },
+                    {
+                        "local": "parseCreditNote",
+                        "remote": "parseCreditNote"
+                    },
+                    {
+                        "local": "parseDeliveryNote",
+                        "remote": "parseDeliveryNote"
+                    },
+                    {
+                        "local": "parsePurchaseOrder",
+                        "remote": "parsePurchaseOrder"
+                    },
+                    {
+                        "local": "parseBankStatement",
+                        "remote": "parseBankStatement"
+                    },
+                    {
+                        "local": "parseCv",
+                        "remote": "parseCv"
+                    },
+                    {
+                        "local": "getQuote",
+                        "remote": "getQuote"
+                    },
+                    {
+                        "local": "getAccount",
+                        "remote": "getAccount"
+                    },
+                    {
+                        "local": "getUsage",
+                        "remote": "getUsage"
+                    },
+                    {
+                        "local": "makeApiCall",
+                        "remote": "makeApiCall"
+                    }
+                ],
+                "function": [],
+                "rpc": [],
+                "webhook": []
+            }
+        }
+    ]
 }

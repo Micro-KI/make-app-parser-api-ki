@@ -1,5 +1,5 @@
 {
-    "url": "/account",
+    "url": "https://parser-api.micro-ki.de/api/v1/account",
     "method": "GET",
     "headers": {
         "Authorization": "Bearer {{parameters.apiKey}}"

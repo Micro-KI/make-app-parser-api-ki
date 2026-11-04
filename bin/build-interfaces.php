@@ -220,7 +220,30 @@ final class MakeAppBuilder
                 'rpc'      => new stdClass(),
                 'webhook'  => new stdClass(),
             ],
-            'origins' => [],
+            'origins' => [
+                [
+                    'label'      => 'Make EU1',
+                    'baseUrl'    => 'https://eu1.make.com/api',
+                    'appId'      => 'parser-api-ki-m0evy9',
+                    'appVersion' => 1,
+                    'apikeyFile' => '../.secrets/apikey',
+                    'idMapping'  => [
+                        'connection' => [
+                            [
+                                'local'  => 'parserApiKi',
+                                'remote' => 'parser-api-ki-m0evy9',
+                            ],
+                        ],
+                        'module' => array_values(array_map(
+                            static fn (string $id): array => ['local' => $id, 'remote' => $id],
+                            array_keys($modules),
+                        )),
+                        'function' => [],
+                        'rpc'      => [],
+                        'webhook'  => [],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -351,7 +374,7 @@ final class MakeAppBuilder
     private function connectionCommunication(): array
     {
         return [
-            'url'    => '/account',
+            'url'    => 'https://parser-api.micro-ki.de/api/v1/account',
             'method' => 'GET',
             'headers' => [
                 'Authorization' => 'Bearer {{parameters.apiKey}}',

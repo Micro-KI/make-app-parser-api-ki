@@ -1,0 +1,267 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /AF [7 0 R] /Names << /EmbeddedFiles 8 0 R >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1044 >>
+stream
+BT
+/F1 10 Tf
+50 800 Td
+12 TL
+(Rechnung RE-2026-0412) Tj
+T*
+() Tj
+T*
+(Nordlicht Software GmbH) Tj
+T*
+(Invalidenstraﬂe 12, 10115 Berlin) Tj
+T*
+(HRB 248811 B ∑ USt-IdNr. DE813261125 ∑ St.-Nr. 29/453/31876) Tj
+T*
+(Telefon +49 30 49827100 ∑ rechnung@nordlicht-software.example) Tj
+T*
+(IBAN DE02 1203 0000 0000 2020 51 ∑ BIC BYLADEM1001) Tj
+T*
+() Tj
+T*
+(Kunde: Kaffeewerk Elster UG) Tj
+T*
+(Karl-Liebknecht-Straﬂe 8, 04107 Leipzig) Tj
+T*
+(USt-IdNr. DE291847562 ∑ Kundennummer KW-1044) Tj
+T*
+() Tj
+T*
+(Rechnungsdatum: 12.03.2026) Tj
+T*
+(Leistungszeitraum: 01.03.2026 ñ 31.05.2026) Tj
+T*
+(F‰llig am: 26.03.2026) Tj
+T*
+() Tj
+T*
+(Pos  Art.-Nr.    Beschreibung                               Menge   Einzel     Netto) Tj
+T*
+(1    HOST-TEAM   Hosting Plan Team, Abrechnung M‰rzñMai 2026    3    89,00    267,00 EUR) Tj
+T*
+(2    SETUP-1     Onboarding Setup, einmalig                     1   120,00    120,00 EUR) Tj
+T*
+() Tj
+T*
+(Netto 387,00 EUR) Tj
+T*
+(USt 19 % 73,53 EUR) Tj
+T*
+(Brutto 460,53 EUR) Tj
+T*
+() Tj
+T*
+(Zahlbar ohne Abzug bis 26.03.2026.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /EmbeddedFile /Subtype /text#2Fxml /Length 8086 >>
+stream
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fiktive XRechnung (UN/CEFACT CII, XRechnung 3.0) f√ºr Tests: SaaS-Rechnung Nordlicht ‚Üí Kaffeewerk Elster. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</ram:ID>
+    </ram:GuidelineSpecifiedDocumentContextParameter>
+  </rsm:ExchangedDocumentContext>
+  <rsm:ExchangedDocument>
+    <ram:ID>RE-2026-0412</ram:ID>
+    <ram:TypeCode>380</ram:TypeCode>
+    <ram:IssueDateTime>
+      <udt:DateTimeString format="102">20260312</udt:DateTimeString>
+    </ram:IssueDateTime>
+    <ram:IncludedNote>
+      <ram:Content>Zahlbar ohne Abzug innerhalb von 14 Tagen. Leistungszeitraum M√§rz bis Mai 2026.</ram:Content>
+    </ram:IncludedNote>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>1</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:SellerAssignedID>HOST-TEAM</ram:SellerAssignedID>
+        <ram:Name>Hosting Plan Team, Abrechnung M√§rz‚ÄìMai 2026</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>89.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="MON">3</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>267.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>2</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:SellerAssignedID>SETUP-1</ram:SellerAssignedID>
+        <ram:Name>Onboarding Setup, einmalig</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>120.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="C62">1</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>120.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:ApplicableHeaderTradeAgreement>
+      <ram:BuyerReference>KW-1044</ram:BuyerReference>
+      <ram:SellerTradeParty>
+        <ram:Name>Nordlicht Software GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="0002">HRB 248811 B</ram:ID>
+          <ram:TradingBusinessName>Nordlicht Software GmbH</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>10115</ram:PostcodeCode>
+          <ram:LineOne>Invalidenstra√üe 12</ram:LineOne>
+          <ram:CityName>Berlin</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+        <ram:DefinedTradeContact>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>+49 30 49827100</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>rechnung@nordlicht-software.example</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">DE813261125</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="FC">29/453/31876</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:SellerTradeParty>
+      <ram:BuyerTradeParty>
+        <ram:ID>KW-1044</ram:ID>
+        <ram:Name>Kaffeewerk Elster UG</ram:Name>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>04107</ram:PostcodeCode>
+          <ram:LineOne>Karl-Liebknecht-Stra√üe 8</ram:LineOne>
+          <ram:CityName>Leipzig</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">DE291847562</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:BuyerTradeParty>
+    </ram:ApplicableHeaderTradeAgreement>
+    <ram:ApplicableHeaderTradeDelivery>
+      <ram:ActualDeliverySupplyChainEvent>
+        <ram:OccurrenceDateTime>
+          <udt:DateTimeString format="102">20260301</udt:DateTimeString>
+        </ram:OccurrenceDateTime>
+      </ram:ActualDeliverySupplyChainEvent>
+    </ram:ApplicableHeaderTradeDelivery>
+    <ram:ApplicableHeaderTradeSettlement>
+      <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+      <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>58</ram:TypeCode>
+        <ram:PayeePartyCreditorFinancialAccount>
+          <ram:IBANID>DE02120300000000202051</ram:IBANID>
+        </ram:PayeePartyCreditorFinancialAccount>
+        <ram:PayeeSpecifiedCreditorFinancialInstitution>
+          <ram:BICID>BYLADEM1001</ram:BICID>
+        </ram:PayeeSpecifiedCreditorFinancialInstitution>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>73.53</ram:CalculatedAmount>
+        <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:BasisAmount>387.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+        <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+      </ram:ApplicableTradeTax>
+      <ram:BillingSpecifiedPeriod>
+        <ram:StartDateTime>
+          <udt:DateTimeString format="102">20260301</udt:DateTimeString>
+        </ram:StartDateTime>
+        <ram:EndDateTime>
+          <udt:DateTimeString format="102">20260531</udt:DateTimeString>
+        </ram:EndDateTime>
+      </ram:BillingSpecifiedPeriod>
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:Description>Zahlbar ohne Abzug innerhalb von 14 Tagen.</ram:Description>
+        <ram:DueDateDateTime>
+          <udt:DateTimeString format="102">20260326</udt:DateTimeString>
+        </ram:DueDateDateTime>
+      </ram:SpecifiedTradePaymentTerms>
+      <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        <ram:LineTotalAmount>387.00</ram:LineTotalAmount>
+        <ram:TaxBasisTotalAmount>387.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount>73.53</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>460.53</ram:GrandTotalAmount>
+        <ram:DuePayableAmount>460.53</ram:DuePayableAmount>
+      </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+    </ram:ApplicableHeaderTradeSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
+
+endstream
+endobj
+7 0 obj
+<< /Type /Filespec /F (factur-x.xml) /UF (factur-x.xml) /EF << /F 6 0 R >> /AFRelationship /Data >>
+endobj
+8 0 obj
+<< /Names [(factur-x.xml) 7 0 R] >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000015 00000 n 
+0000000110 00000 n 
+0000000167 00000 n 
+0000000293 00000 n 
+0000001388 00000 n 
+0000001485 00000 n 
+0000009664 00000 n 
+0000009779 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R /Info << /Title (Rechnung RE-2026-0412) >> >>
+startxref
+9830
+%%EOF

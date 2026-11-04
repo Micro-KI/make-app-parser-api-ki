@@ -1,0 +1,106 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1416 >>
+stream
+BT
+/F1 10 Tf
+50 800 Td
+12 TL
+(Lebenslauf) Tj
+T*
+() Tj
+T*
+(Lena Hoffmann) Tj
+T*
+(Backend-Entwicklerin) Tj
+T*
+() Tj
+T*
+(Invalidenstraße 48, 10115 Berlin) Tj
+T*
+(lena.hoffmann@example.com) Tj
+T*
+(+49 163 4728810) Tj
+T*
+(geboren am 14.05.1991 in Rostock) Tj
+T*
+() Tj
+T*
+(Kurzprofil) Tj
+T*
+(Softwareentwicklerin mit Schwerpunkt PHP und Symfony. Seit 2022 bei der) Tj
+T*
+(Nordlicht Software GmbH in Berlin, davor drei Jahre Agenturarbeit in Hamburg.) Tj
+T*
+() Tj
+T*
+(Berufserfahrung) Tj
+T*
+(03.2022 – heute  Nordlicht Software GmbH, Berlin  Backend-Entwicklerin) Tj
+T*
+(- REST-APIs für Rechnungs- und Belegverarbeitung) Tj
+T*
+(- Symfony 7, PHPUnit, Queue-Jobs für OCR) Tj
+T*
+(- Code-Reviews und Einarbeitung neuer Kolleginnen) Tj
+T*
+(08.2019 – 02.2022  Hafencode GmbH, Hamburg  Softwareentwicklerin) Tj
+T*
+(- Kundenportale in PHP und Vue) Tj
+T*
+(- Schnittstellen zu DATEV und Hausbanken) Tj
+T*
+(- Bereitschaftsdienst für den Shop-Checkout) Tj
+T*
+(04.2017 – 07.2019  Stadtwerke Küste, Rostock  Werkstudentin IT) Tj
+T*
+(- Skripte für Zählerstandsimport) Tj
+T*
+(- Kleine Web-Frontends für den Kundenservice) Tj
+T*
+() Tj
+T*
+(Ausbildung) Tj
+T*
+(10.2014 – 03.2018  HAW Hamburg, B.Sc. Informatik, Note 1,7) Tj
+T*
+(Bachelorarbeit: Ereignisgetriebene Verarbeitung von XML-Belegen) Tj
+T*
+() Tj
+T*
+(Kenntnisse: PHP, Symfony, PostgreSQL, Redis, Git, Linux) Tj
+T*
+(Deutsch C2, Englisch B2) Tj
+T*
+() Tj
+T*
+(Berlin, 18. März 2026) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000001714 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R /Info << /Title (Lebenslauf Lena Hoffmann) >> >>
+startxref
+1811
+%%EOF
