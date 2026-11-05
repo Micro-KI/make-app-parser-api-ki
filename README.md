@@ -28,18 +28,18 @@ Saving or editing a connection validates the key against `GET /api/v1/account` (
 
 Each document type has its own module so Make provides a **100% static output interface** in the mapping dialog immediately—without requiring a test run with a real file first.
 
-| Group | Module | Endpoint | Output |
-| --- | --- | --- | --- |
-| **Documents** | **Parse an invoice** | `POST /api/v1/invoice` | Fixed schema `invoice.v1` |
-| **Documents** | **Parse a credit note** | `POST /api/v1/credit-note` | Fixed schema `creditnote.v1` |
-| **Documents** | **Parse a delivery note** | `POST /api/v1/delivery-note` | Fixed schema `deliverynote.v1` |
-| **Documents** | **Parse a purchase order** | `POST /api/v1/purchase-order` | Fixed schema `purchaseorder.v1` |
-| **Documents** | **Parse a bank statement** | `POST /api/v1/bank-statement` | Fixed schema `bankstatement.v1` |
-| **Documents** | **Parse a CV** | `POST /api/v1/cv` | Fixed schema `cv.v1` |
-| **Account** | **Get a quote** | `POST /api/v1/quote` | Calculates what parsing the file would cost (`0` credits) |
-| **Account** | **Get an account** | `GET /api/v1/account` | Credit balance, available credits, alert threshold (`0` credits) |
-| **Account** | **Search usage entries** | `GET /api/v1/usage` | Search module iterating over `entries[]` from today and yesterday (up to 50, newest first) |
-| **Other** | **Make an API call** | `/api/v1/…` | Arbitrary authorized call to `parser-api.micro-ki.de` (fixed host) |
+| Group | Module | Endpoint | Output | English Spec |
+| --- | --- | --- | --- | --- |
+| **Documents** | **Parse an invoice** | `POST /api/v1/invoice` | Fixed schema `invoice.v1` | [PDF](https://parser-api.micro-ki.de/doku/rechnung.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/rechnung.en.md) |
+| **Documents** | **Parse a credit note** | `POST /api/v1/credit-note` | Fixed schema `creditnote.v1` | [PDF](https://parser-api.micro-ki.de/doku/gutschrift.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/gutschrift.en.md) |
+| **Documents** | **Parse a delivery note** | `POST /api/v1/delivery-note` | Fixed schema `deliverynote.v1` | [PDF](https://parser-api.micro-ki.de/doku/lieferschein.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/lieferschein.en.md) |
+| **Documents** | **Parse a purchase order** | `POST /api/v1/purchase-order` | Fixed schema `purchaseorder.v1` | [PDF](https://parser-api.micro-ki.de/doku/bestellung.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/bestellung.en.md) |
+| **Documents** | **Parse a bank statement** | `POST /api/v1/bank-statement` | Fixed schema `bankstatement.v1` | [PDF](https://parser-api.micro-ki.de/doku/kontoauszug.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/kontoauszug.en.md) |
+| **Documents** | **Parse a CV** | `POST /api/v1/cv` | Fixed schema `cv.v1` | [PDF](https://parser-api.micro-ki.de/doku/lebenslauf.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/lebenslauf.en.md) |
+| **Account** | **Get a quote** | `POST /api/v1/quote` | Calculates what parsing the file would cost (`0` credits) | [PDF](https://parser-api.micro-ki.de/doku/make.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/make.en.md) |
+| **Account** | **Get an account** | `GET /api/v1/account` | Credit balance, available credits, alert threshold (`0` credits) | [PDF](https://parser-api.micro-ki.de/doku/make.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/make.en.md) |
+| **Account** | **Search usage entries** | `GET /api/v1/usage` | Search module iterating over `entries[]` from today and yesterday (up to 50, newest first) | [PDF](https://parser-api.micro-ki.de/doku/make.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/make.en.md) |
+| **Other** | **Make an API call** | `/api/v1/…` | Arbitrary authorized call to `parser-api.micro-ki.de` (fixed host) | [PDF](https://parser-api.micro-ki.de/doku/make.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/make.en.md) |
 
 ## Quick Start
 
@@ -84,8 +84,16 @@ The app configures a **280-second (`280,000 ms`) HTTP timeout** via [`src/genera
 
 ## Documentation
 
+- **English Make Integration Guide:** [PDF](https://parser-api.micro-ki.de/doku/make.en.pdf) · [Markdown](https://parser-api.micro-ki.de/doku/make.en.md)
+- **English Endpoint Specifications (full field tables, examples, warnings & error codes):**
+  - Invoice (`invoice.v1`): [PDF](https://parser-api.micro-ki.de/doku/rechnung.en.pdf) · [Markdown](https://parser-api.micro-ki.de/doku/rechnung.en.md)
+  - Credit Note (`creditnote.v1`): [PDF](https://parser-api.micro-ki.de/doku/gutschrift.en.pdf) · [Markdown](https://parser-api.micro-ki.de/doku/gutschrift.en.md)
+  - Delivery Note (`deliverynote.v1`): [PDF](https://parser-api.micro-ki.de/doku/lieferschein.en.pdf) · [Markdown](https://parser-api.micro-ki.de/doku/lieferschein.en.md)
+  - Purchase Order (`purchaseorder.v1`): [PDF](https://parser-api.micro-ki.de/doku/bestellung.en.pdf) · [Markdown](https://parser-api.micro-ki.de/doku/bestellung.en.md)
+  - Bank Statement (`bankstatement.v1`): [PDF](https://parser-api.micro-ki.de/doku/kontoauszug.en.pdf) · [Markdown](https://parser-api.micro-ki.de/doku/kontoauszug.en.md)
+  - CV (`cv.v1`): [PDF](https://parser-api.micro-ki.de/doku/lebenslauf.en.pdf) · [Markdown](https://parser-api.micro-ki.de/doku/lebenslauf.en.md)
 - [Development and schema generator](docs/development.md)
-- [Parser API KI+ API reference](https://parser-api.micro-ki.de/doku) (with English and German Markdown/PDF downloads for every endpoint and for Make)
+- [Parser API KI+ online API reference](https://parser-api.micro-ki.de/doku#make) (German page with English downloads)
 - [Make integration overview](https://parser-api.micro-ki.de/make)
 
 ## License

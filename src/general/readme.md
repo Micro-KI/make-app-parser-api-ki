@@ -5,7 +5,9 @@
 - **Structured documents** (ZUGFeRD 1.0 & 2.x, Factur-X, XRechnung CII/UBL, Peppol BIS, EDIFACT INVOIC/DESADV, camt.052/053/054, SWIFT MT940/MT942) are parsed deterministically without AI at the single-file rate.
 - **Office documents and plain text** (`DOCX`, `ODT`, `TXT`) and **PDFs, scans, and photos** (`PDF`, `JPG`, `PNG`, `WEBP`, `TIFF`, `HEIC`) are extracted via OCR and AI hosted in the EU.
 
-See the full [API documentation](https://parser-api.micro-ki.de/doku) for field tables, limits, and error codes.
+See the [API documentation](https://parser-api.micro-ki.de/doku#make) (German overview page) or download the complete **English specifications**:
+- Make integration guide: [PDF](https://parser-api.micro-ki.de/doku/make.en.pdf) · [Markdown](https://parser-api.micro-ki.de/doku/make.en.md)
+- Endpoint specifications (English): [Invoice (PDF)](https://parser-api.micro-ki.de/doku/rechnung.en.pdf) · [Credit Note (PDF)](https://parser-api.micro-ki.de/doku/gutschrift.en.pdf) · [Delivery Note (PDF)](https://parser-api.micro-ki.de/doku/lieferschein.en.pdf) · [Purchase Order (PDF)](https://parser-api.micro-ki.de/doku/bestellung.en.pdf) · [Bank Statement (PDF)](https://parser-api.micro-ki.de/doku/kontoauszug.en.pdf) · [CV (PDF)](https://parser-api.micro-ki.de/doku/lebenslauf.en.pdf)
 
 ---
 
@@ -28,14 +30,14 @@ Saving or editing a connection validates the key against `GET /api/v1/account` (
 
 Each document type has its own module so Make provides a **100% static output interface** immediately in the mapping dialog without requiring a test run first:
 
-| Module | Endpoint | Output Schema |
-| --- | --- | --- |
-| **Parse an invoice** | `POST /api/v1/invoice` | `invoice.v1` |
-| **Parse a credit note** | `POST /api/v1/credit-note` | `creditnote.v1` |
-| **Parse a delivery note** | `POST /api/v1/delivery-note` | `deliverynote.v1` |
-| **Parse a purchase order** | `POST /api/v1/purchase-order` | `purchaseorder.v1` |
-| **Parse a bank statement** | `POST /api/v1/bank-statement` | `bankstatement.v1` |
-| **Parse a CV** | `POST /api/v1/cv` | `cv.v1` |
+| Module | Endpoint | Output Schema | English Spec |
+| --- | --- | --- | --- |
+| **Parse an invoice** | `POST /api/v1/invoice` | `invoice.v1` | [PDF](https://parser-api.micro-ki.de/doku/rechnung.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/rechnung.en.md) |
+| **Parse a credit note** | `POST /api/v1/credit-note` | `creditnote.v1` | [PDF](https://parser-api.micro-ki.de/doku/gutschrift.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/gutschrift.en.md) |
+| **Parse a delivery note** | `POST /api/v1/delivery-note` | `deliverynote.v1` | [PDF](https://parser-api.micro-ki.de/doku/lieferschein.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/lieferschein.en.md) |
+| **Parse a purchase order** | `POST /api/v1/purchase-order` | `purchaseorder.v1` | [PDF](https://parser-api.micro-ki.de/doku/bestellung.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/bestellung.en.md) |
+| **Parse a bank statement** | `POST /api/v1/bank-statement` | `bankstatement.v1` | [PDF](https://parser-api.micro-ki.de/doku/kontoauszug.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/kontoauszug.en.md) |
+| **Parse a CV** | `POST /api/v1/cv` | `cv.v1` | [PDF](https://parser-api.micro-ki.de/doku/lebenslauf.en.pdf) · [MD](https://parser-api.micro-ki.de/doku/lebenslauf.en.md) |
 
 Map **File** (`data`) and **File name** (`fileName`, including the file extension such as `invoice.pdf`) from a preceding module such as **Gmail > Watch Attachments**, **Google Drive > Download a File**, or **HTTP > Download a file**.
 
