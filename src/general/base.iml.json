@@ -1,5 +1,6 @@
 {
     "baseUrl": "https://parser-api.micro-ki.de/api/v1",
+    "timeout": "{{common.timeout}}",
     "headers": {
         "Authorization": "Bearer {{connection.apiKey}}",
         "Accept": "application/json"

@@ -111,6 +111,7 @@ final class MakeAppBuilder
         $files = [
             'makecomapp.json'                                          => $this->json($this->manifest()),
             'general/base.iml.json'                                    => $this->json($this->base()),
+            'general/common.json'                                      => $this->json($this->common()),
             'general/readme.md'                                        => $this->appReadme(),
             'connections/parserApiKi/parserApiKi.params.iml.json'      => $this->json($this->connectionParams()),
             'connections/parserApiKi/parserApiKi.communication.iml.json' => $this->json($this->connectionCommunication()),
@@ -199,7 +200,7 @@ final class MakeAppBuilder
             'fileVersion'      => 1,
             'generalCodeFiles' => [
                 'base'   => 'general/base.iml.json',
-                'common' => null,
+                'common' => 'general/common.json',
                 'readme' => 'general/readme.md',
                 'groups' => 'modules/groups.json',
             ],
@@ -297,37 +298,37 @@ final class MakeAppBuilder
             'parseInvoice' => [
                 'document'    => DocumentType::Invoice,
                 'label'       => 'Parse an invoice',
-                'description' => 'Parses an invoice (ZUGFeRD, Factur-X, XRechnung, EDIFACT, PDF or scan) and returns the invoice.v1 JSON. The call stops after 40 seconds.',
+                'description' => 'Parses an invoice (ZUGFeRD, Factur-X, XRechnung, EDIFACT, PDF or scan) and returns the invoice.v1 JSON.',
                 'linesOcr'    => true,
             ],
             'parseCreditNote' => [
                 'document'    => DocumentType::CreditNote,
                 'label'       => 'Parse a credit note',
-                'description' => 'Parses a credit note and returns the creditnote.v1 JSON. The call stops after 40 seconds.',
+                'description' => 'Parses a credit note and returns the creditnote.v1 JSON.',
                 'linesOcr'    => false,
             ],
             'parseDeliveryNote' => [
                 'document'    => DocumentType::DeliveryNote,
                 'label'       => 'Parse a delivery note',
-                'description' => 'Parses a delivery note (Peppol despatch advice, DESADV, PDF or scan) and returns the deliverynote.v1 JSON. The call stops after 40 seconds.',
+                'description' => 'Parses a delivery note (Peppol despatch advice, DESADV, PDF or scan) and returns the deliverynote.v1 JSON.',
                 'linesOcr'    => false,
             ],
             'parsePurchaseOrder' => [
                 'document'    => DocumentType::PurchaseOrder,
                 'label'       => 'Parse a purchase order',
-                'description' => 'Parses a purchase order (UBL Order, PDF or scan) and returns the purchaseorder.v1 JSON. The call stops after 40 seconds.',
+                'description' => 'Parses a purchase order (UBL Order, PDF or scan) and returns the purchaseorder.v1 JSON.',
                 'linesOcr'    => false,
             ],
             'parseBankStatement' => [
                 'document'    => DocumentType::BankStatement,
                 'label'       => 'Parse a bank statement',
-                'description' => 'Parses a bank statement (camt, MT940, MT942, PDF or scan) and returns the bankstatement.v1 JSON. The call stops after 40 seconds.',
+                'description' => 'Parses a bank statement (camt, MT940, MT942, PDF or scan) and returns the bankstatement.v1 JSON.',
                 'linesOcr'    => false,
             ],
             'parseCv' => [
                 'document'    => DocumentType::Cv,
                 'label'       => 'Parse a CV',
-                'description' => 'Parses a CV and returns the cv.v1 JSON. Every CV is read by the AI. The call stops after 40 seconds.',
+                'description' => 'Parses a CV and returns the cv.v1 JSON. Every CV is read by the AI.',
                 'linesOcr'    => false,
             ],
         ];
@@ -340,6 +341,7 @@ final class MakeAppBuilder
     {
         return [
             'baseUrl' => 'https://parser-api.micro-ki.de/api/v1',
+            'timeout' => '{{common.timeout}}',
             'headers' => [
                 'Authorization' => 'Bearer {{connection.apiKey}}',
                 'Accept'        => 'application/json',
@@ -350,6 +352,16 @@ final class MakeAppBuilder
             'log' => [
                 'sanitize' => ['request.headers.authorization'],
             ],
+        ];
+    }
+
+    /**
+     * @return array<string, int>
+     */
+    private function common(): array
+    {
+        return [
+            'timeout' => 280000,
         ];
     }
 
@@ -1463,11 +1475,11 @@ All API errors include the HTTP status code, the stable snake_case `error.code`,
 
 ---
 
-## 40-Second Timeout Limit
+## Timeout (280 Seconds)
 
-Make enforces a hard platform timeout of **40 seconds** for all Custom App HTTP calls:
-- **95% of everyday documents**—all structured files (`< 2 s`) and normal 1–4 page PDFs, scans, and photos (`5–20 s`)—finish well within 40 seconds.
-- **Very long multi-page scans** (such as a 15-page scanned bank statement requiring `> 40 s` of OCR) should use the **Make HTTP Blueprint** available in your [Parser API KI+ account](https://parser-api.micro-ki.de/account/anbindung), which uses Make's native HTTP module with a **280-second timeout**.
+The app configures a **280-second (`280,000 ms`) HTTP timeout** via `general/common.json` and `general/base.iml.json` (`"timeout": "{{common.timeout}}"`), matching the 270-second server processing budget of Parser API KI+:
+- **Structured files** (ZUGFeRD, Factur-X, XRechnung, EDIFACT, camt, MT940) finish in `< 2 s`.
+- **PDFs, scans, and photos** (up to 20 pages / 15 MB) have the full 280-second window for OCR and AI extraction.
 
 MD;
     }

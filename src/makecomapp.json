@@ -2,7 +2,7 @@
     "fileVersion": 1,
     "generalCodeFiles": {
         "base": "general/base.iml.json",
-        "common": null,
+        "common": "general/common.json",
         "readme": "general/readme.md",
         "groups": "modules/groups.json"
     },
@@ -22,7 +22,7 @@
         "module": {
             "parseInvoice": {
                 "label": "Parse an invoice",
-                "description": "Parses an invoice (ZUGFeRD, Factur-X, XRechnung, EDIFACT, PDF or scan) and returns the invoice.v1 JSON. The call stops after 40 seconds.",
+                "description": "Parses an invoice (ZUGFeRD, Factur-X, XRechnung, EDIFACT, PDF or scan) and returns the invoice.v1 JSON.",
                 "moduleType": "action",
                 "actionCrud": "read",
                 "connection": "parserApiKi",
@@ -35,7 +35,7 @@
             },
             "parseCreditNote": {
                 "label": "Parse a credit note",
-                "description": "Parses a credit note and returns the creditnote.v1 JSON. The call stops after 40 seconds.",
+                "description": "Parses a credit note and returns the creditnote.v1 JSON.",
                 "moduleType": "action",
                 "actionCrud": "read",
                 "connection": "parserApiKi",
@@ -48,7 +48,7 @@
             },
             "parseDeliveryNote": {
                 "label": "Parse a delivery note",
-                "description": "Parses a delivery note (Peppol despatch advice, DESADV, PDF or scan) and returns the deliverynote.v1 JSON. The call stops after 40 seconds.",
+                "description": "Parses a delivery note (Peppol despatch advice, DESADV, PDF or scan) and returns the deliverynote.v1 JSON.",
                 "moduleType": "action",
                 "actionCrud": "read",
                 "connection": "parserApiKi",
@@ -61,7 +61,7 @@
             },
             "parsePurchaseOrder": {
                 "label": "Parse a purchase order",
-                "description": "Parses a purchase order (UBL Order, PDF or scan) and returns the purchaseorder.v1 JSON. The call stops after 40 seconds.",
+                "description": "Parses a purchase order (UBL Order, PDF or scan) and returns the purchaseorder.v1 JSON.",
                 "moduleType": "action",
                 "actionCrud": "read",
                 "connection": "parserApiKi",
@@ -74,7 +74,7 @@
             },
             "parseBankStatement": {
                 "label": "Parse a bank statement",
-                "description": "Parses a bank statement (camt, MT940, MT942, PDF or scan) and returns the bankstatement.v1 JSON. The call stops after 40 seconds.",
+                "description": "Parses a bank statement (camt, MT940, MT942, PDF or scan) and returns the bankstatement.v1 JSON.",
                 "moduleType": "action",
                 "actionCrud": "read",
                 "connection": "parserApiKi",
@@ -87,7 +87,7 @@
             },
             "parseCv": {
                 "label": "Parse a CV",
-                "description": "Parses a CV and returns the cv.v1 JSON. Every CV is read by the AI. The call stops after 40 seconds.",
+                "description": "Parses a CV and returns the cv.v1 JSON. Every CV is read by the AI.",
                 "moduleType": "action",
                 "actionCrud": "read",
                 "connection": "parserApiKi",

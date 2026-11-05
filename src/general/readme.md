@@ -97,8 +97,8 @@ All API errors include the HTTP status code, the stable snake_case `error.code`,
 
 ---
 
-## 40-Second Timeout Limit
+## Timeout (280 Seconds)
 
-Make enforces a hard platform timeout of **40 seconds** for all Custom App HTTP calls:
-- **95% of everyday documents**—all structured files (`< 2 s`) and normal 1–4 page PDFs, scans, and photos (`5–20 s`)—finish well within 40 seconds.
-- **Very long multi-page scans** (such as a 15-page scanned bank statement requiring `> 40 s` of OCR) should use the **Make HTTP Blueprint** available in your [Parser API KI+ account](https://parser-api.micro-ki.de/account/anbindung), which uses Make's native HTTP module with a **280-second timeout**.
+The app configures a **280-second (`280,000 ms`) HTTP timeout** via `general/common.json` and `general/base.iml.json` (`"timeout": "{{common.timeout}}"`), matching the 270-second server processing budget of Parser API KI+:
+- **Structured files** (ZUGFeRD, Factur-X, XRechnung, EDIFACT, camt, MT940) finish in `< 2 s`.
+- **PDFs, scans, and photos** (up to 20 pages / 15 MB) have the full 280-second window for OCR and AI extraction.
