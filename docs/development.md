@@ -1,32 +1,55 @@
-# Entwicklung
+# Development
 
-`bin/build-interfaces.php` liest die API nebenan:
+`bin/build-interfaces.php` generates all Make Apps SDK files under `src/` directly from the Parser API KI+ schema definitions and field descriptions:
 
-- `config/schemas/*.json` über `SchemaCatalog`
-- `SchemaFieldMeanings` und `SchemaFieldMeaningsEn`
+- `config/schemas/*.json` via `SchemaCatalog`
+- `SchemaFieldMeaningsEn` and `SchemaFieldMeanings`
 - `ResponseEnvelopeFields`
-- `TestFixtures` für die Beispielausgaben
+- `TestFixtures` for the module sample outputs
 
-Die Hülle (`source`, `request_id`, `billed`, `available`, `pricing`) setzt das Skript an dieselbe Stelle wie die öffentliche Feldtabelle: direkt hinter `schema`. `pricing.rule` und `pricing.label` stehen nicht im Dokument-Schema, das Skript ergänzt sie.
+The HTTP response envelope fields (`source`, `request_id`, `billed`, `available`, `pricing.rule`, `pricing.label`) are inserted at the same position as in the public field tables: immediately after `schema`.
 
-`--check` bricht mit Exit-Code 1 ab, wenn eine Datei unter `src/` nicht mehr zum Skript passt. Die Prüfung vergleicht außerdem jede Schema-Pfadliste mit dem Make-Interface. Fehlt ein Feld oder kommt eines dazu, bricht der Lauf ab.
+## Regenerating and Checking Interfaces
 
-Beispiele in den Samples nutzen den Satzbau von `PricingCopy` mit den Beispielzahlen 1 und 2 Credits. Der laufende Tarif des Kontos kann anders sein. Die Samples zeigen die Form, nicht die aktuelle Preistafel.
+Place the API checkout next to this repository at `../parser-api_micro-ki_de` (or set `PARSER_API_DIR`):
 
-Komponenten-IDs, die nach dem ersten Deploy stabil bleiben:
+```bash
+php bin/build-interfaces.php
+php bin/build-interfaces.php --check
+```
 
-| Lokal | Rolle |
+`--check` exits with status `1` if any file under `src/` is out of sync with the generator or if any schema path is missing from a module interface. The generated files under `src/` are committed to the repository so the app can be deployed to Make without running PHP first.
+
+Sample outputs use illustrative rate labels from `PricingCopy` (`1` and `2` credits) to demonstrate the response structure.
+
+## Stable Component and Parameter IDs
+
+Do not rename internal component IDs or parameter names once scenarios are saved in Make (visible labels and descriptions may change):
+
+| Component ID | Role |
 | --- | --- |
-| `parserApiKi` | Verbindung, Feld `apiKey` |
-| `parseInvoice` | `POST /invoice` |
-| `parseCreditNote` | `POST /credit-note` |
-| `parseDeliveryNote` | `POST /delivery-note` |
-| `parsePurchaseOrder` | `POST /purchase-order` |
-| `parseBankStatement` | `POST /bank-statement` |
-| `parseCv` | `POST /cv` |
-| `getQuote` | `POST /quote` |
-| `getAccount` | `GET /account` |
-| `getUsage` | `GET /usage` (Search-Modul, iteriert `body.entries`, Parameter `type` und `limit`) |
-| `makeApiCall` | Pfad ab der Domain, zum Beispiel `/api/v1/account`, Host fest |
+| `parserApiKi` | Basic connection (`apiKey` parameter) |
+| `parseInvoice` | Action module (`POST /invoice`) |
+| `parseCreditNote` | Action module (`POST /credit-note`) |
+| `parseDeliveryNote` | Action module (`POST /delivery-note`) |
+| `parsePurchaseOrder` | Action module (`POST /purchase-order`) |
+| `parseBankStatement` | Action module (`POST /bank-statement`) |
+| `parseCv` | Action module (`POST /cv`) |
+| `getQuote` | Action module (`POST /quote`) |
+| `getAccount` | Action module (`GET /account`) |
+| `getUsage` | Search module (`GET /usage`, iterates `body.entries`, parameters `type` and `limit`) |
+| `makeApiCall` | Universal REST module (relative path on fixed host `https://parser-api.micro-ki.de`) |
 
-Parameter, die gespeicherte Szenarien ansprechen: `data`, `fileName`, `type`, `limit`, `linesOcr`, `force`, `idempotencyKey`. `linesOcr` gibt es nur bei der Rechnung und bei der Kosten-Anfrage. `limit` nur bei `getUsage`. Die Merknummer nur beim Auslesen, und nur wenn sie ausgefüllt ist. Leer heißt: kein `Idempotency-Key`. `makeApiCall` lässt den Nutzer nur den Pfad setzen, nicht den Host, damit der Schlüssel nicht an einen anderen Server geht.
+Stable parameter names: `data`, `fileName`, `type`, `limit`, `linesOcr`, `force`, `idempotencyKey`.
+
+- `linesOcr` is only present on `parseInvoice` and `getQuote`.
+- `limit` is only present on `getUsage`.
+- `idempotencyKey` is only present on the six parse modules and is omitted when left empty.
+- `makeApiCall` only accepts a path relative to `https://parser-api.micro-ki.de` so the API key is never sent to another host.
+
+## Deploying with the Make Apps SDK
+
+1. Install the VS Code / Cursor extension **Make Apps Editor** (`Integromat.apps-sdk`).
+2. Store your Make API token (`sdk-apps:read`, `sdk-apps:write`) in `.secrets/apikey` (ignored by git).
+3. Right-click `src/makecomapp.json` and choose **Deploy to Make**.
+4. For the app icon, upload `assets/icon.png` (512 × 512 px black on transparent PNG; Make renders black as white on `#00e8ff`). The vector source is in `assets/icon.svg`.

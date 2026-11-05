@@ -1,67 +1,93 @@
-# Make Custom App für Parser API KI+
+# make-app-parser-api-ki
 
-Quellen der Make-App **Parser API KI+**. Make spricht sie über das [Apps SDK](https://developers.make.com/custom-apps-documentation/get-started/make-apps-editor/apps-sdk/local-development-for-apps) an. Die API bleibt `https://parser-api.micro-ki.de`. Dieses Repo ist der Baustein, nicht der Dienst: echte Dateien kosten Credits.
+Official [Make](https://www.make.com/) Custom App for [Parser API KI+](https://parser-api.micro-ki.de). It sends a business document to `https://parser-api.micro-ki.de` and returns a fixed, predictable JSON schema (`invoice.v1`, `creditnote.v1`, `deliverynote.v1`, `purchaseorder.v1`, `bankstatement.v1`, `cv.v1`). It also supports calculating a price quote, checking your credit balance, searching recent API usage, and making arbitrary authorized API calls.
 
-Die App hat sechs Auslese-Module, weil jedes Modul in Make ein festes Ausgabeschema braucht. Sobald jemand **Parse an invoice** ins Szenario zieht, sind die Felder da, ohne einen Probelauf mit einer echten Datei. Alle sichtbaren Texte in der App sind Englisch, wie Make es im Katalog verlangt.
+- **Structured documents** (ZUGFeRD 1.0 & 2.x, Factur-X, XRechnung CII/UBL, Peppol BIS, EDIFACT INVOIC/DESADV, camt.052/053/054, SWIFT MT940/MT942) are parsed deterministically without AI at the single-file rate.
+- **Office documents and plain text** (`DOCX`, `ODT`, `TXT`) and **PDFs, scans, and photos** (`PDF`, `JPG`, `PNG`, `WEBP`, `TIFF`, `HEIC`) are extracted via OCR and AI hosted in the EU.
 
-| Modul | Aufruf | Antwort |
-| --- | --- | --- |
-| Parse an invoice | `POST /api/v1/invoice` | `invoice.v1` |
-| Parse a credit note | `POST /api/v1/credit-note` | `creditnote.v1` |
-| Parse a delivery note | `POST /api/v1/delivery-note` | `deliverynote.v1` |
-| Parse a purchase order | `POST /api/v1/purchase-order` | `purchaseorder.v1` |
-| Parse a bank statement | `POST /api/v1/bank-statement` | `bankstatement.v1` |
-| Parse a CV | `POST /api/v1/cv` | `cv.v1` |
-| Get a quote | `POST /api/v1/quote` | Preis, ohne Abbuch |
-| Get an account | `GET /api/v1/account` | Guthaben, 0 Credits |
-| Search usage entries | `GET /api/v1/usage` | Einträge von heute und gestern, je Eintrag ein Bundle |
-| Make an API call | Pfad ab der Domain, zum Beispiel `/api/v1/account` | Body, Header, Status |
+The app definition in this repository is free and MIT-licensed. Parser API KI+ is a paid service: parsing real files spends prepaid credits from your account.
 
-Die Verbindung prüft den Schlüssel mit `GET /api/v1/account`. Eintragen nur den Schlüssel, ohne das Wort `Bearer`. Zum Bauen der Szenarien reicht der öffentliche Test-Key `pak_test_X0001`: die Datei wird ignoriert, es läuft keine KI, zurück kommt das Beispiel-JSON. Einen eigenen Live-Key (`pak_live_…`) gibt es mit dem [Starter-Paket](https://parser-api.micro-ki.de/starten) (Prepaid-Credits, kein Abo).
+## Installation in Make
 
-## Erweiterte Einstellungen (Advanced settings)
+Install the app directly in your Make organization via the official invite link:
 
-Unter **Show advanced settings** am Ende der Auslese- und Kosten-Module liegen die optionalen Header:
+👉 **[Install Parser API KI+ in Make](https://www.make.com/en/hq/app-invitation/14daf32a9d18de978f6d1a4d2a23c015)**
 
-| Einstellung | Parameter | Modul | Wirkung |
+## Connection & API Keys
+
+Create a **Parser API KI+** connection in Make and paste your API key without the `Bearer` prefix:
+
+| Key | Use |
+| --- | --- |
+| `pak_live_…` | Live key from your [Parser API KI+ account](https://parser-api.micro-ki.de/account/zugang). Parsing real files spends credits. New to Parser API KI+? [Get the Starter Package](https://parser-api.micro-ki.de/starten) (prepaid credits, no subscription). |
+| `pak_test_X0001` | Public sandbox key. Ignores the uploaded file, runs no AI, spends `0` credits, and always returns the official sample JSON for the chosen endpoint. Use it to build and test scenarios free of charge. |
+
+Saving or editing a connection validates the key against `GET /api/v1/account` (`0` credits) and displays the account email address next to the connection name. The server host is fixed so your API key is only ever sent to `parser-api.micro-ki.de`.
+
+## Modules
+
+Each document type has its own module so Make provides a **100% static output interface** in the mapping dialog immediately—without requiring a test run with a real file first.
+
+| Group | Module | Endpoint | Output |
 | --- | --- | --- | --- |
-| **Read lines with OCR** | `linesOcr` (Boolean, Standard `false`) | `Parse an invoice`, `Get a quote` | Sendet `X-Parser-Lines: ocr`. Für ZUGFeRD-/Factur-X-PDFs im Profil `MINIMUM` oder `BASIC WL`, deren eingebettetes XML keine Positionen enthält (`warnings` enthält `xml_without_lines`). Die KI liest die Positionen und fehlende Felder von der sichtbaren Seite, Kopf und Summen aus dem XML bleiben erhalten. Kostet den PDF-OCR-Seitenpreis. |
-| **Force fresh read** | `force` (Boolean, Standard `false`) | alle `Parse`-Module, `Get a quote` | Sendet `X-Parser-Force: 1`. Überspringt die 15-Minuten-Antwort aus dem Cache und liest die Datei neu aus (kostet wieder Credits). Bei ZUGFeRD-/Factur-X-PDFs wird damit das eingebettete XML übersprungen und die sichtbare Seite per KI gelesen (`xml_forced_ocr`). Bei `Get a quote` wird der Preis für das frische Auslesen berechnet, ohne Credits abzubuchen. |
-| **Idempotency key** | `idempotencyKey` (Text, optional) | alle `Parse`-Module | Sendet `Idempotency-Key` (`8` bis `128` Zeichen: `A–Z`, `a–z`, `0–9`, `.`, `_`, `-`). Leer lassen sendet keinen Header; dieselbe Datei erkennt der Server über den SHA-256-Hash trotzdem 15 Minuten lang für `0` Credits. Wird ein eigener Schlüssel gesetzt, muss er je Datei eindeutig sein und bei Wiederholungen gleich bleiben; derselbe Schlüssel für eine andere Datei liefert `409 idempotency_key_conflict`. |
+| **Documents** | **Parse an invoice** | `POST /api/v1/invoice` | Fixed schema `invoice.v1` |
+| **Documents** | **Parse a credit note** | `POST /api/v1/credit-note` | Fixed schema `creditnote.v1` |
+| **Documents** | **Parse a delivery note** | `POST /api/v1/delivery-note` | Fixed schema `deliverynote.v1` |
+| **Documents** | **Parse a purchase order** | `POST /api/v1/purchase-order` | Fixed schema `purchaseorder.v1` |
+| **Documents** | **Parse a bank statement** | `POST /api/v1/bank-statement` | Fixed schema `bankstatement.v1` |
+| **Documents** | **Parse a CV** | `POST /api/v1/cv` | Fixed schema `cv.v1` |
+| **Account** | **Get a quote** | `POST /api/v1/quote` | Calculates what parsing the file would cost (`0` credits) |
+| **Account** | **Get an account** | `GET /api/v1/account` | Credit balance, available credits, alert threshold (`0` credits) |
+| **Account** | **Search usage entries** | `GET /api/v1/usage` | Search module iterating over `entries[]` from today and yesterday (up to 50, newest first) |
+| **Other** | **Make an API call** | `/api/v1/…` | Arbitrary authorized call to `parser-api.micro-ki.de` (fixed host) |
 
-## Grenze: 40 Sekunden
+## Quick Start
 
-Make bricht HTTP-Aufrufe einer Custom App nach 40 Sekunden ab. Das lässt sich in der App nicht auf 280 Sekunden hochsetzen. Strukturierte Belege (ZUGFeRD, XRechnung, EDIFACT, camt, MT940) und kurze PDFs sind damit bedient. Ein langer, mehrseitiger Scan bleibt im Make-Blueprint mit dem HTTP-Modul (Timeout 280 Sekunden) im Kundenkonto.
+1. Add a module that outputs a file, for example **Gmail > Watch Attachments**, **Google Drive > Download a File**, or **HTTP > Download a file**.
+2. Add a **Parser API KI+** parse module (for example **Parse an invoice**) and map **File** (`data`) and **File name** (`fileName`, including the file extension such as `invoice.pdf`).
+3. Run the scenario or map the static output pills (`Invoice number`, `Amount due`, `IBAN`, `Lines`, `Confidence`, `Warnings`, etc.) into the next module.
 
-## Felder
+### Public Sample Files for Testing
 
-Die Ausgabefelder kommen aus den Schemas und den Bedeutungstexten der API, nicht von Hand. Das Pill trägt einen kurzen englischen Namen (1 bis 3 Wörter). Nach einer Änderung an `config/schemas/` oder `SchemaFieldMeaningsEn` neu erzeugen:
+To test a scenario with **HTTP > Download a file** without connecting your own mailbox or drive, use one of the synthetic sample files in [`samples/`](samples/) of this repository:
 
-```bash
-php bin/build-interfaces.php
-php bin/build-interfaces.php --check
-```
+- Invoice (hybrid ZUGFeRD/Factur-X PDF): `https://raw.githubusercontent.com/Micro-KI/make-app-parser-api-ki/main/samples/invoice.pdf`
+- Invoice (XRechnung XML): `https://raw.githubusercontent.com/Micro-KI/make-app-parser-api-ki/main/samples/invoice.xml`
+- Credit note (PDF): `https://raw.githubusercontent.com/Micro-KI/make-app-parser-api-ki/main/samples/credit-note.pdf`
+- Delivery note (PDF): `https://raw.githubusercontent.com/Micro-KI/make-app-parser-api-ki/main/samples/delivery-note.pdf`
+- Purchase order (PDF): `https://raw.githubusercontent.com/Micro-KI/make-app-parser-api-ki/main/samples/purchase-order.pdf`
+- Bank statement (PDF): `https://raw.githubusercontent.com/Micro-KI/make-app-parser-api-ki/main/samples/bank-statement.pdf`
+- CV (PDF): `https://raw.githubusercontent.com/Micro-KI/make-app-parser-api-ki/main/samples/cv.pdf`
 
-Dafür liegt der Checkout der API daneben unter `../parser-api_micro-ki_de`. Sonst `PARSER_API_DIR` setzen. Die erzeugten Dateien unter `src/` gehören ins Repo, damit die App ohne PHP-Lauf nach Make geht.
+## Advanced Settings
 
-Interne Namen (`parseInvoice`, `parserApiKi`, `data`, `fileName`) nicht mehr umbenennen, sobald ein Szenario sie gespeichert hat. Sichtbare Bezeichnungen dürfen sich ändern.
+Toggle **Show advanced settings** at the bottom of a parse or quote module to configure optional headers:
 
-## Nach Make bringen
+| Setting | Parameter | Available in | Effect |
+| --- | --- | --- | --- |
+| **Read lines with OCR** | `linesOcr` (Boolean, default `false`) | **Parse an invoice**, **Get a quote** | Sends `X-Parser-Lines: ocr`. For hybrid ZUGFeRD or Factur-X PDFs in the `MINIMUM` or `BASIC WL` profile whose XML contains header and total amounts but no line items (`warnings` contains `xml_without_lines`). The AI reads line items and missing fields from the visible page while keeping all XML header and total values intact. Billed at the per-page PDF-OCR rate. |
+| **Force fresh read** | `force` (Boolean, default `false`) | All **Parse** modules, **Get a quote** | Sends `X-Parser-Force: 1`. Skips the cached response from the last 15 minutes and runs a fresh parse (spending credits again). On hybrid ZUGFeRD/Factur-X PDFs, skips the embedded XML and reads the visible page via OCR (`xml_forced_ocr`). In **Get a quote**, calculates the price of a fresh parse (`0` credits). |
+| **Idempotency key** | `idempotencyKey` (Text, optional) | All **Parse** modules | Sends `Idempotency-Key` (`8` to `128` characters: `A–Z`, `a–z`, `0–9`, `.`, `_`, `-`). Leave empty to send no header; identical files are still deduplicated automatically via their SHA-256 hash for 15 minutes at `0` credits. If set, use a unique value per file that stays identical across retries; reusing the same key for a different file returns `409 idempotency_key_conflict`. |
 
-1. In Make eine Custom App anlegen, Anzeigename **Parser API KI+**, Farbe `#00e8ff`. Das Icon für den Upload liegt unter `assets/icon.png` (512 × 512 Pixel, schwarz auf transparent, Make färbt es weiß auf der Themenfarbe). Die Vektorvorlage liegt unter `assets/icon.svg`.
-2. Die VS-Code-Erweiterung **Make Apps SDK** installieren, den API-Token von Make nach `.secrets/apikey` legen (der Ordner ist in `.gitignore`).
-3. In `src/makecomapp.json` unter `origins` die Zone eintragen, zum Beispiel `https://eu1.make.com/api`, plus `appId` und `appVersion`. Die Erweiterung kann den Eintrag auch anlegen. `idMapping` nicht von Hand pflegen.
-4. `src/makecomapp.json` rechtsklicken und **Deploy to Make** wählen.
-5. Mit `pak_test_X0001` und einem Live-Key je ein kurzes PDF und eine E-Rechnung durch **Parse an invoice** schicken. Zum Testen ohne eigenes E-Mail- oder Drive-Modul setzt man **HTTP → Download a file** vor das Modul und mappt daraus **`Data`** auf **File** sowie **`File name`** auf **File name**. Öffentliche Beispiel-Rechnungen (ohne Login abrufbar):
-   - ZUGFeRD-PDF: `https://raw.githubusercontent.com/ZUGFeRD/mustangproject/master/library/src/test/resources/MustangGnuaccountingBeispielRE-20170509_505.pdf`
-   - UBL/XRechnung-XML: `https://raw.githubusercontent.com/ConnectingEurope/eInvoicing-EN16931/master/ubl/examples/ubl-tc434-example1.xml`
-   - Zusätzlich liegen im Ordner `samples/` dieses Repos synthetische Testdateien für alle sechs Dokumenttypen (`invoice.pdf`, `invoice.xml`, `credit-note.pdf`, `delivery-note.pdf`, `purchase-order.pdf`, `bank-statement.pdf`, `cv.pdf`).
-   Die Merknummer bleibt leer, dann geht kein `Idempotency-Key` mit. Dieselbe Datei erkennt der Server 15 Minuten lang auch ohne Merknummer. Für eine eigene Nummer den Wert im Modul eintragen: 8 bis 128 Zeichen, pro Datei ein eigener Wert, bei einer Wiederholung derselbe.
-6. Den Invite-Link aus Make auf `/make` und im Konto unter Anbindung neben den Blueprint legen. Solange der Link fehlt, bleibt die Website unverändert.
-7. Für den öffentlichen Katalog dieselbe App bei Make zur Prüfung geben.
+## Error Handling & Automatic Retries
 
-Make wiederholt `429` von sich aus (`RateLimitError`) und `5xx` als vorübergehenden Verbindungsfehler. Zusätzlich gilt `409` als `RateLimitError`, außer `idempotency_key_conflict`: der ist ein `RuntimeError` und wird nicht wiederholt. `500` mit `account_corrupt` oder `capture_corrupt` ist ebenfalls `RuntimeError`. `401`, `402`, `413`, `415` und `422` bleiben `RuntimeError`.
+All API errors return the HTTP status code, the stable snake_case `error.code`, the English `error.message`, and—when a document was sent to the wrong endpoint—the `detected_type` hint:
 
-## Lizenz
+- **Automatic Retry (`RateLimitError` / `ConnectionError`):** `429 rate_limited`, `409 parse_in_progress` (identical file currently being processed), `409 account_busy`, and transient `5xx` errors. Make pauses the scenario and retries automatically.
+- **Immediate Stop (`RuntimeError`, not retried):** `401`, `402 insufficient_credits`, `409 idempotency_key_conflict`, `413 document_too_large`, `415`, `422` (`not_an_invoice`, `unsupported_document_type`, etc.), and `500 account_corrupt` / `capture_corrupt`.
 
-[MIT](LICENSE). Die Lizenz gilt für diese App-Definition, nicht für den Dienst Parser API KI+.
+## 40-Second Timeout Limit
+
+Make enforces a hard platform timeout of **40 seconds** for all Custom App HTTP calls:
+- **95% of everyday documents**—all structured files (`< 2 s`) and normal 1–4 page PDFs, scans, and photos (`5–20 s`)—finish well within 40 seconds.
+- **Very long multi-page scans** (such as a 15-page scanned bank statement requiring `> 40 s` of OCR) should use the **Make HTTP Blueprint** available in your [Parser API KI+ account](https://parser-api.micro-ki.de/account/anbindung), which uses Make's native HTTP module with a **280-second timeout**.
+
+## Documentation
+
+- [Development and schema generator](docs/development.md)
+- [Parser API KI+ API reference](https://parser-api.micro-ki.de/doku) (with English and German Markdown/PDF downloads for every endpoint and for Make)
+- [Make integration overview](https://parser-api.micro-ki.de/make)
+
+## License
+
+[MIT](LICENSE). The license covers this Make app definition, not the Parser API KI+ service.
