@@ -33,18 +33,21 @@ final class MakeAppBuilder
      * @var array<string, string>
      */
     private const SHORT_LABELS = [
-        'schema'           => 'Schema',
-        'source'           => 'Source',
-        'request_id'       => 'Request ID',
-        'billed'           => 'Credits billed',
-        'available'        => 'Credits available',
-        'warnings[]'       => 'Warnings',
-        'pricing'          => 'Pricing',
-        'pricing.rule'     => 'Rule',
-        'pricing.label'    => 'Label',
-        'confidence'       => 'Confidence',
-        'balances.opening' => 'Opening balance',
-        'balances.closing' => 'Closing balance',
+        'schema'                      => 'Schema',
+        'source'                      => 'Source',
+        'request_id'                  => 'Request ID',
+        'billed'                      => 'Credits billed',
+        'available'                   => 'Credits available',
+        'warnings[]'                  => 'Warnings',
+        'pricing'                     => 'Pricing',
+        'pricing.rule'                => 'Rule',
+        'pricing.label'               => 'Label',
+        'confidence'                  => 'Confidence',
+        'confidence.vendor'           => 'Supplier',
+        'supplier'                    => 'Supplier',
+        'balances.opening'            => 'Opening balance',
+        'balances.closing'            => 'Closing balance',
+        'transactions[].debit_credit' => 'Debit/credit indicator',
     ];
 
     private const ERROR_MESSAGE = "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}";
@@ -123,7 +126,7 @@ final class MakeAppBuilder
             $meanings = $this->meanings($type);
             $interface = $this->interfaceFromSchema($this->schema($type), $meanings, '');
             $this->assertCoversSchema($id, $type, $interface);
-            $files["modules/{$id}/{$id}.mappable-params.iml.json"] = $this->json($this->parseParams($module['linesOcr']));
+            $files["modules/{$id}/{$id}.mappable-params.iml.json"] = $this->json($this->parseParams($type, $module['linesOcr']));
             $files["modules/{$id}/{$id}.communication.iml.json"]   = $this->json($this->parseCommunication($type, $module['linesOcr']));
             $files["modules/{$id}/{$id}.interface.iml.json"]       = $this->json($interface);
             $files["modules/{$id}/{$id}.samples.iml.json"]         = $this->json($this->parseSample($type));
@@ -408,11 +411,11 @@ final class MakeAppBuilder
     /**
      * @return list<array<string, mixed>>
      */
-    private function parseParams(bool $linesOcr): array
+    private function parseParams(DocumentType $type, bool $linesOcr): array
     {
         $params = [
             $this->fileParam(),
-            $this->fileNameParam(),
+            $this->fileNameParam($this->exampleFileName($type)),
         ];
         if ($linesOcr) {
             $params[] = [
@@ -433,6 +436,9 @@ final class MakeAppBuilder
             'label'    => 'Idempotency key',
             'help'     => 'Optional unique key per file (`8` to `128` characters: letters, digits, `.`, `_`, `-`) to safely retry a request. If left empty, no `Idempotency-Key` header is sent and identical files are still cached for 15 minutes.',
             'advanced' => true,
+            'validate' => [
+                'pattern' => '^[A-Za-z0-9._-]{8,128}$',
+            ],
         ];
 
         return $params;
@@ -479,7 +485,7 @@ final class MakeAppBuilder
         return [
             $this->typeParam(true),
             $this->fileParam(),
-            $this->fileNameParam(),
+            $this->fileNameParam('credit-note.pdf'),
             [
                 'name'     => 'linesOcr',
                 'type'     => 'boolean',
@@ -655,8 +661,11 @@ final class MakeAppBuilder
             ],
             'response' => [
                 'iterate' => '{{body.entries}}',
-                'output'  => '{{item}}',
-                'limit'   => '{{parameters.limit}}',
+                'output'  => [
+                    '{{...}}' => '{{item}}',
+                    'ts'      => "{{parseDate(item.ts; 'YYYY-MM-DDTHH:mm:ssZ')}}",
+                ],
+                'limit' => '{{parameters.limit}}',
             ],
         ];
     }
@@ -719,16 +728,28 @@ final class MakeAppBuilder
     /**
      * @return array<string, mixed>
      */
-    private function fileNameParam(): array
+    private function fileNameParam(string $example): array
     {
         return [
             'name'     => 'fileName',
             'type'     => 'filename',
             'label'    => 'File name',
-            'help'     => 'File name with extension. For example, `invoice.pdf`.',
+            'help'     => sprintf('File name with extension. For example, `%s`.', $example),
             'required' => true,
             'semantic' => 'file:name',
         ];
+    }
+
+    private function exampleFileName(DocumentType $type): string
+    {
+        return match ($type) {
+            DocumentType::Invoice       => 'invoice.pdf',
+            DocumentType::CreditNote    => 'credit-note.pdf',
+            DocumentType::DeliveryNote  => 'delivery-note.pdf',
+            DocumentType::PurchaseOrder => 'purchase-order.pdf',
+            DocumentType::BankStatement => 'statement.pdf',
+            DocumentType::Cv            => 'cv.pdf',
+        };
     }
 
     /**
@@ -761,15 +782,14 @@ final class MakeAppBuilder
         }
 
         return [
-            'name'      => 'type',
-            'type'      => 'select',
-            'label'     => 'Document type',
-            'help'      => $required
+            'name'     => 'type',
+            'type'     => 'select',
+            'label'    => 'Document type',
+            'help'     => $required
                 ? 'Document type to calculate the price for. For example, `credit-note`.'
                 : 'Filter usage entries by document type. If left empty, all document types are returned.',
-            'required'  => $required,
-            'mappable'  => false,
-            'options'   => $options,
+            'required' => $required,
+            'options'  => $options,
         ];
     }
 
@@ -929,7 +949,7 @@ final class MakeAppBuilder
             'message' => self::ERROR_MESSAGE,
             '409'     => [
                 'message' => self::ERROR_MESSAGE,
-                'type'    => "{{if(body.error.code == 'idempotency_key_conflict', 'RuntimeError', 'RateLimitError')}}",
+                'type'    => "{{if(body.error.code == 'parse_in_progress' || body.error.code == 'account_busy', 'RateLimitError', 'RuntimeError')}}",
             ],
             '500' => [
                 'message' => self::ERROR_MESSAGE,

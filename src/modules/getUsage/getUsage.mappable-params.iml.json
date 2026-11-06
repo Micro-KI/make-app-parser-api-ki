@@ -5,7 +5,6 @@
         "label": "Document type",
         "help": "Filter usage entries by document type. If left empty, all document types are returned.",
         "required": false,
-        "mappable": false,
         "options": [
             {
                 "label": "Invoice",

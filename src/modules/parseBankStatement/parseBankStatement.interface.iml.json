@@ -256,7 +256,7 @@
             {
                 "name": "debit_credit",
                 "type": "text",
-                "label": "Debit credit"
+                "label": "Debit/credit indicator"
             },
             {
                 "name": "status",

@@ -61,7 +61,7 @@
     {
         "name": "supplier",
         "type": "collection",
-        "label": "Sender",
+        "label": "Supplier",
         "spec": [
             {
                 "name": "name",

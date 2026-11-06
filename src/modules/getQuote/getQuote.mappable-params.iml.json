@@ -5,7 +5,6 @@
         "label": "Document type",
         "help": "Document type to calculate the price for. For example, `credit-note`.",
         "required": true,
-        "mappable": false,
         "options": [
             {
                 "label": "Invoice",
@@ -45,7 +44,7 @@
         "name": "fileName",
         "type": "filename",
         "label": "File name",
-        "help": "File name with extension. For example, `invoice.pdf`.",
+        "help": "File name with extension. For example, `credit-note.pdf`.",
         "required": true,
         "semantic": "file:name"
     },

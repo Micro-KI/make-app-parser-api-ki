@@ -6,7 +6,10 @@
     },
     "response": {
         "iterate": "{{body.entries}}",
-        "output": "{{item}}",
+        "output": {
+            "{{...}}": "{{item}}",
+            "ts": "{{parseDate(item.ts; 'YYYY-MM-DDTHH:mm:ssZ')}}"
+        },
         "limit": "{{parameters.limit}}"
     }
 }

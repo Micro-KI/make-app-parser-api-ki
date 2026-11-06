@@ -11,7 +11,7 @@
         "name": "fileName",
         "type": "filename",
         "label": "File name",
-        "help": "File name with extension. For example, `invoice.pdf`.",
+        "help": "File name with extension. For example, `statement.pdf`.",
         "required": true,
         "semantic": "file:name"
     },
@@ -28,6 +28,9 @@
         "type": "text",
         "label": "Idempotency key",
         "help": "Optional unique key per file (`8` to `128` characters: letters, digits, `.`, `_`, `-`) to safely retry a request. If left empty, no `Idempotency-Key` header is sent and identical files are still cached for 15 minutes.",
-        "advanced": true
+        "advanced": true,
+        "validate": {
+            "pattern": "^[A-Za-z0-9._-]{8,128}$"
+        }
     }
 ]

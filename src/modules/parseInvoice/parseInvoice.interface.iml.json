@@ -577,7 +577,7 @@
             {
                 "name": "vendor",
                 "type": "number",
-                "label": "Vendor"
+                "label": "Supplier"
             },
             {
                 "name": "invoice",

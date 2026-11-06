@@ -10,7 +10,7 @@
             "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
             "409": {
                 "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
-                "type": "{{if(body.error.code == 'idempotency_key_conflict', 'RuntimeError', 'RateLimitError')}}"
+                "type": "{{if(body.error.code == 'parse_in_progress' || body.error.code == 'account_busy', 'RateLimitError', 'RuntimeError')}}"
             },
             "500": {
                 "message": "[{{statusCode}} {{ifempty(body.error.code, 'error')}}] {{ifempty(body.error.message, ifempty(body.message, 'Request failed'))}}{{if(body.error.detected_type, ' (detected_type: ' + body.error.detected_type + ')', '')}}",
